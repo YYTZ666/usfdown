@@ -2,7 +2,7 @@
         const files = [
            {
                 name: "USF0.6.31(S）",
-                description: "适配1.21.31。",
+                description: "适配1.21.31",
                 tags: ["正式版", "1.21"],
                 shareLink: "#",
                 feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
@@ -10,7 +10,7 @@
             },
                 {
                 name: "USF0.6.30(S)",
-                description: "适配1.21.30。修复了一些bug。",
+                description: "适配1.21.30（测试版）。修复了一些bug。",
                 tags: ["正式版", "1.21"],
                 shareLink: "#",
                 feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
@@ -65,11 +65,75 @@
                 downloadLink: "/file/main/0.6.24F.zip"
             },
            {
-                name: "USF0.6.23E）",
+                name: "USF0.6.23E",
                 description: "适配1.21.0-1.21.1-1.21.2",
                 tags: ["正式版", "1.21"],
                 shareLink: "#",
                 feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
                 downloadLink: "/file/main/0.6.23E.zip"
-            },            
+            },
+           {
+                name: "USF0.6.22B",
+                description: "适配1.21.0-1.21.1-1.21.2",
+                tags: ["正式版", "1.21"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.22B.zip"
+            },
+           {
+                name: "USF0.6.21B",
+                description: "适配1.21.0-1.21.1-1.21.2",
+                tags: ["正式版", "1.21"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.21B.zip"
+            },
+           {
+                name: "USF0.6.20",
+                description: "适配1.21.0-1.21.1",
+                tags: ["正式版", "1.21"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.20.mcpack"
+            },
+           {
+                name: "USF0.6.19.1",
+                description: "适配1.21.0-1.21.1",
+                tags: ["正式版", "1.21"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.19.1.zip"
+            },
+           {
+                name: "USF0.6.19",
+                description: "适配1.21.0-1.21.1",
+                tags: ["正式版", "1.21"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.19.zip"
+            },
+           {
+                name: "USF0.6.18.5-USF1.21.0正式版行为包",
+                description: "适配1.21.0",
+                tags: ["正式版", "1.21"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/filemain/USF1.21.0正式版行为包（基于1.20.80适配版）.mcpack"
+            },
+           {
+                name: "USF0.6.18.1",
+                description: "适配1.20.80",
+                tags: ["正式版", "1.20"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/[指令凋灵修改（适配1.20.80）]无名氏B-0.6.18.mcpack"
+            },
+           {
+                name: "USF0.6.18",
+                description: "适配1.20.50/60",
+                tags: ["正式版", "1.20"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0-6-18B.zip"
+            },
         ];
