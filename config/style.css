@@ -156,67 +156,97 @@ body {
     cursor: pointer;
 }
 
-/* 头部样式 */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-    background: linear-gradient(to right, #f0f0f0, #ffffff);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+/* Header 样式 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
-header:hover {
-    background: linear-gradient(to right, #e0e0e0, #ffffff);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+.header {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  box-sizing: border-box;
+  opacity: 0; /* 初始状态透明 */
+  transform: translateY(-20px); /* 初始状态向上偏移 */
+  animation: slideFadeIn 0.8s ease forwards; /* 进入时淡入下滑动画 */
 }
 
-/* logo 样式 */
-.logo img {
-    max-width: 120px;
+.logo {
+  font-size: 20px;
+  font-weight: bold;
 }
 
-/* 返回文档站按钮 */
-.back-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    border: 2px solid white;
-    border-radius: 50px;
-    background: transparent;
-    color: #e0e0a0;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    margin-left: auto;
+.nav a {
+  text-decoration: none;
+  color: #000;
+  margin-left: 15px;
+  font-size: 16px;
 }
 
-.back-btn:hover {
-    background: white;
-    color: #333;
-    transform: scale(1.05);
+.nav a:hover {
+  text-decoration: underline;
 }
 
-.back-btn:active {
-    transform: scale(0.95);
+/* 公告栏样式 */
+.announcement {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 0, 0, 0.9);
+  color: #fff;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  top: 50px;
+  z-index: 998;
+  backdrop-filter: blur(5px);
+  transition: top 0.3s ease;
+  box-sizing: border-box;
+}
+
+.announcement p {
+  margin: 0;
+}
+
+#close-btn {
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#close-btn:hover {
+  color: #ccc;
+}
+
+/* 隐藏公告栏的动画 */
+.announcement.hide {
+  top: -100px;
+}
+
+/* 淡入下滑动画 */
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px); /* 向上偏移 */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* 复位 */
+  }
 }
 
 /* 自适应样式 */
 @media (max-width: 768px) {
-    header {
-        padding: 10px 20px;
-    }
-
-    .logo img {
-        max-width: 100px;
-    }
-
     .back-btn {
         font-size: 0.9rem;
         padding: 8px 15px;
