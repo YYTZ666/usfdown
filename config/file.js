@@ -118,7 +118,7 @@
                 tags: ["正式版", "1.21"],
                 shareLink: "#",
                 feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-                downloadLink: "/filemain/USF1.21.0正式版行为包（基于1.20.80适配版）.mcpack"
+                downloadLink: "file/main/USF1.21.0正式版行为包.mcpack"
             },
            {
                 name: "USF0.6.18.1",
