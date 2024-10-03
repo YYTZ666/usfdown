@@ -64,5 +64,12 @@
                 feedbackLink: "#",
                 downloadLink: "/file/main/0.6.24F.zip"
             },
-            
+           {
+                name: "USF0.6.23E）",
+                description: "适配1.21.0-1.21.1-1.21.2",
+                tags: ["正式版", "1.21"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.23E.zip"
+            },            
         ];
