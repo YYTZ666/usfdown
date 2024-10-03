@@ -5,7 +5,7 @@
                 description: "适配1.21.31。",
                 tags: ["正式版", "1.21"],
                 shareLink: "#",
-                feedbackLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
                 downloadLink: "/file/main/0.6.31S.zip"
             },
                 {
@@ -13,7 +13,7 @@
                 description: "适配1.21.30。修复了一些bug。",
                 tags: ["正式版", "1.21"],
                 shareLink: "#",
-                feedbackLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
                 downloadLink: "/file/main/0.6.30S.zip"
             },
             {
