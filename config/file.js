@@ -1,6 +1,14 @@
         // 数据config
         const files = [
            {
+                name: "USF0.6.32B",
+                description: "适配1.21.30/31",
+                tags: ["正式版", "1.21"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.32B.zip"
+            },
+           {
                 name: "USF0.6.31(S）",
                 description: "适配1.21.31",
                 tags: ["正式版", "1.21"],
