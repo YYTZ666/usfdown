@@ -12,23 +12,28 @@ body {
     padding: 20px;
 }
 
-/* 过滤按钮容器 */
-.filter-container {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap; /* 支持小屏幕分列显示 */
-    margin-bottom: 20px;
-}
+/* 自适应样式 */
+@media (max-width: 768px) {
+    /* 让筛选按钮在小屏幕下有更好的布局 */
+    .filter-container {
+        justify-content: flex-start; /* 左对齐 */
+    }
 
-.filter-category {
-    margin-right: 20px;
-    font-weight: bold;
-}
+    .filter-btn {
+        margin-bottom: 10px; /* 添加按钮之间的竖直间距 */
+        padding: 8px 15px; /* 缩小内边距，适配小屏幕 */
+        flex-grow: 1; /* 让所有按钮有相同的宽度，但不占满行 */
+        max-width: 48%; /* 每行最多放两个按钮，留下间距 */
+    }
 
-.filter-separator {
-    border-left: 1px solid #ccc;
-    height: 40px;
-    margin: 0 20px;
+    .filter-category {
+        flex-basis: 100%; /* 类别标题占据整行 */
+        margin-bottom: 10px;
+    }
+    
+    .filter-separator {
+        display: none; /* 在小屏幕上隐藏分隔符，避免视觉拥挤 */
+    }
 }
 
 .filter-btn {
@@ -302,11 +307,66 @@ body {
     display: none;
 }
 
-footer {
-    position: relative;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.footer {
+  background: linear-gradient(to right, #ffffff, #f0f0f0, #ffffff);
+  animation: gradient-marquee 5s infinite linear; /* 跑马灯动画 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden; /* 防止内容溢出 */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.footer-logo img {
+  width: 100px;
+  height: auto;
+}
+
+.footer-rights {
+  color: #333;
+  font-size: 16px;
+  text-align: center;
+}
+
+.footer-links {
+  margin-top: 5px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #007BFF;
+  margin: 0 5px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* 跑马灯动画 */
+@keyframes gradient-marquee {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
