@@ -136,4 +136,61 @@
                 feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
                 downloadLink: "/file/main/0-6-18B.zip"
             },
+           {
+                name: "USF0.6.17B-F",
+                description: "适配1.20.50/60",
+                tags: ["正式版", "1.20"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.17B-F.zip"
+            },
+           {
+                name: "USF0.6.16B",
+                description: "适配1.20.50/60",
+                tags: ["正式版", "1.20"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.16B.zip"
+            },
+           {
+                name: "USF0.6.15B",
+                description: "适配1.20.50/60",
+                tags: ["正式版", "1.20"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.15B.zip"
+            },
+           {
+                name: "USF0.6.14F",
+                description: "适配1.20.50/60",
+                tags: ["正式版", "1.20"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.14F.zip"
+            },
+           {
+                name: "USF0.6.13B",
+                description: "适配1.20.50/60",
+                tags: ["正式版", "1.20"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.13B.zip"
+            },
+            },
+           {
+                name: "USF0.6.12E",
+                description: "适配1.20.50/51",
+                tags: ["正式版", "1.20"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.12E.zip"
+            },
+           {
+                name: "USF0.6.11E",
+                description: "适配1.20.50/51",
+                tags: ["正式版", "1.20"],
+                shareLink: "#",
+                feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+                downloadLink: "/file/main/0.6.11E.zip"
+            },
         ];
