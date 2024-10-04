@@ -2,7 +2,7 @@
         const files = [
            {
                 name: "USF0.6.32B",
-                description: "适配1.21.30/31",
+                description: "适配1.21.30+",
                 tags: ["正式版", "1.21"],
                 shareLink: "#",
                 feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
