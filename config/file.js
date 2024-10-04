@@ -176,7 +176,6 @@
                 feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
                 downloadLink: "/file/main/0.6.13B.zip"
             },
-            },
            {
                 name: "USF0.6.12E",
                 description: "适配1.20.50/51",
