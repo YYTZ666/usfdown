@@ -4,7 +4,7 @@
                 name: "USF0.6.32B",
                 description: "适配1.21.30+ 保守估计可以适配到1.22出来（只要ojag不改2.0.0-alpha）实测1.21.40-beta可用",
                 tags: ["正式版", "1.21"],
-                shareLink: "保守估计可以适配到1.22出来（只要ojag不改2.0.0-alpha）实测1.21.40-beta可用",
+                shareLink: "#",
                 feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
                 downloadLink: "/file/main/0.6.32B.zip"
             },
