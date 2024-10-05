@@ -9,12 +9,11 @@
     <script src="config/file.js"></script>
     <script src="config/logic.js"></script>
     <style>
-
     </style>
 </head>
 <body>
   <div id="announcement" class="announcement">
-    <p>注意：本站所提供行为包均不能在由网易公司运营的《我的世界》运行</p>
+    <p>本站所提供行为包均不能在由网易公司运营的《我的世界》运行</p>
     <span id="close-btn">&times;</span>
   </div>
 
@@ -166,7 +165,7 @@ function loadMoreFiles() {
 }
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 200) { // 提前200px加载
         loadMoreFiles();
     }
 });
