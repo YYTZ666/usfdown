@@ -1,303 +1,82 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USF下载站</title>
-    <link rel="stylesheet" type="text/css" href="/config/style.css">
-    <script src="config/header.js"></script>
-    <script src="config/file.js"></script>
-    <script src="config/logic.js"></script>
-    <style>
-    </style>
+    <link rel="stylesheet" type="text/css" href="config/style.css">
 </head>
+
 <body>
-  <div id="announcement" class="announcement">
-    <p>本站所提供行为包均不能在由网易公司运营的《我的世界》运行</p>
-    <span id="close-btn">&times;</span>
-  </div>
-
-  <!-- Header -->
-  <header class="header">
-    <div class="logo">USF插件下载站</div>
-    <nav class="nav">
-      <a href="https://github.com/YYTZ666/usfdown/issues/new/choose">问题反馈</a>
-      <a href="http://usf.earthdll.cn?project">USF文档站</a>
-    </nav>
-  </header>
-
-  <section style="margin-top:50px;">
-    <div class="container">
-        <!-- 搜索框 -->
-        <form id="search-form">
-            <input type="text" id="search-input" placeholder="搜索插件...">
-            <button type="submit">搜索</button>
-        </form>
-
-        <!-- 搜索结果 -->
-        <div id="search-results"></div>
-
-        <!-- 筛选器 -->
-        <div class="filter-container">
-            <div class="filter-category">版本</div>
-            <button class="filter-btn selected" data-tag="全部" id="version-all">全部</button>
-            <button class="filter-btn" data-tag="正式版" id="version-official">正式版</button>
-            <button class="filter-btn" data-tag="测试版" id="version-test">测试版</button>
-            <div class="filter-separator"></div>
-            <div class="filter-category">版本号</div>
-            <button class="filter-btn selected" data-tag="全部" id="version-number-all">全部</button>
-            <button class="filter-btn" data-tag="1.22" id="version-1.22">1.22</button>
-            <button class="filter-btn" data-tag="1.21" id="version-1.21">1.21</button>
-            <button class="filter-btn" data-tag="1.20" id="version-1.20">1.20</button>
-            <button class="filter-btn" data-tag="1.19" id="version-1.19">1.19</button>
-        </div>
-
-        <div id="download-list"></div>
-        <p id="no-more" style="display:none;">没有更多了</p>
-
-        <div id="modal" class="modal">
-            <div class="modal-header">分享链接</div>
-            <p id="download-url"></p>
-            <div class="modal-footer">
-                <button class="btn modal-close">关闭</button>
-                <button class="btn" id="copy-url">复制链接</button>
-            </div>
-        </div>
+    <div id="announcement" class="announcement">
+        <p>本站所提供行为包均不能在由网易公司运营的《我的世界》运行</p>
+        <span id="close-btn">&times;</span>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <img src="https://s21.ax1x.com/2024/10/04/pA8E8hj.png" alt="Logo" width="100" height="auto">
-      </div>
-      <div class="footer-rights">
-        ©2021-至今 ZUY Studio＆USF开发团队 版权所有All Rights Reserved.
-        <div class="footer-links">
-                <a href="https://github.com/YYTZ666/usfdown/">GitHub地址</a> | 
-          <a href="https://zuyst.top/user/">免责声明</a> | 
-          <a href="https://zuyst.top">关于我们</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">USF插件下载站</div>
+        <nav class="nav">
+            <a target="_blank" href="https://github.com/YYTZ666/usfdown/issues/new/choose">问题反馈</a>
+            <a target="_blank" href="http://usf.earthdll.cn?project">USF文档站</a>
+        </nav>
+    </header>
 
-<script>
-const downloadList = document.getElementById('download-list');
-const modal = document.getElementById('modal');
-const downloadUrl = document.getElementById('download-url');
-const noMoreMessage = document.getElementById('no-more');
-const searchForm = document.getElementById('search-form');
-const searchInput = document.getElementById('search-input');
-const searchResults = document.getElementById('search-results');
+    <section style="margin-top:50px;">
+        <div class="container">
 
-let page = 1;
-const itemsPerPage = 10; // 每页显示的文件数量
-let selectedVersion = '全部';
-let selectedVersionNumber = '全部';
-
-function renderFiles(versionTag = '全部', versionNumber = '全部', searchTerm = '') {
-    const start = (page - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-
-    const filteredFiles = files.filter(file => {
-        let versionMatch = versionTag === '全部' || file.tags.includes(versionTag);
-        let numberMatch = versionNumber === '全部' || file.tags.includes(versionNumber);
-        let searchMatch = file.name.toLowerCase().includes(searchTerm.toLowerCase());
-
-        return versionMatch && numberMatch && searchMatch;
-    });
-
-    const filesToDisplay = filteredFiles.slice(start, end);
-
-    if (filesToDisplay.length === 0) {
-        noMoreMessage.style.display = 'block';
-    } else {
-        noMoreMessage.style.display = 'none';
-    }
-
-    filesToDisplay.forEach(file => {
-        const downloadItem = `
-        <div class="download-item">
-            <h3>${file.name}</h3>
-            <p>${file.description}</p>
-            <span class="show-more">展开更多</span>
-            <div class="download-tags">标签: ${file.tags.join(', ')}</div>
-            <div class="button-container">
-                <button class="btn" onclick="openShareModal('${file.downloadLink}')">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 8C19.1 8 20 8.9 20 10V18C20 19.1 19.1 20 18 20H6C4.9 20 4 19.1 4 18V10C4 8.9 4.9 8 6 8H8V6C8 3.8 9.8 2 12 2C14.2 2 16 3.8 16 6V8H18ZM12 12V17H14L12 19L10 17H12V12H10L12 14L14 12H12ZM16 8V6C16 4.9 15.1 4 14 4C12.9 4 12 4.9 12 6V8H16Z" fill="#333"/>
-                    </svg>
-                    分享
-                </button>
-                <button class="btn" onclick="window.location.href='${file.feedbackLink}'">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C13.65 2 15 3.35 15 5C15 6.65 13.65 8 12 8C10.35 8 9 6.65 9 5C9 3.35 10.35 2 12 2ZM6 22C5.45 22 5 21.55 5 21C5 17.13 8.13 14 12 14C15.87 14 19 17.13 19 21C19 21.55 18.55 22 18 22H6Z" fill="#333"/>
-                    </svg>
-                    反馈
-                </button>
-                <button class="btn" onclick="window.location.href='${file.downloadLink}'">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 9H15V3H9V9H5L12 16L19 9ZM5 18H19V20H5V18Z" fill="#333"/>
-                    </svg>
-                    下载
-                </button>
-            </div>
-        </div>
-        `;
-
-        downloadList.innerHTML += downloadItem;
-    });
-
-    setTimeout(() => {
-        const items = document.querySelectorAll('.download-item');
-        items.forEach(item => item.classList.add('show'));
-    }, 100);
-
-    if (end >= filteredFiles.length) {
-        noMoreMessage.style.display = 'block';
-    }
-}
-
-function loadMoreFiles() {
-    page++;
-    renderFiles(selectedVersion, selectedVersionNumber, searchInput.value);
-}
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 200) { // 提前200px加载
-        loadMoreFiles();
-    }
-});
-
-searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    page = 1;
-    downloadList.innerHTML = '';
-    renderFiles(selectedVersion, selectedVersionNumber, searchInput.value);
-    searchResults.style.display = 'none';
-});
-
-searchInput.addEventListener('input', () => {
-    const searchTerm = searchInput.value.toLowerCase();
-    if (searchTerm === '') {
-        searchResults.style.display = 'none';
-        return;
-    }
-
-    const filteredFiles = files.filter(file => {
-        return file.name.toLowerCase().includes(searchTerm) || file.tags.some(tag => tag.toLowerCase().includes(searchTerm));
-    });
-
-    if (filteredFiles.length === 0) {
-        searchResults.innerHTML = '<p>没有找到相关插件</p>';
-    } else {
-        searchResults.innerHTML = '';
-        filteredFiles.forEach(file => {
-            const resultItem = `
-            <div class="search-result-item">
-                <h3>${file.name}</h3>
-                <p>${file.description}</p>
-                <div class="download-tags">标签: ${file.tags.join(', ')}</div>
-                <div class="button-container">
-                    <button class="btn" onclick="window.location.href='${file.downloadLink}'">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 9H15V3H9V9H5L12 16L19 9ZM5 18H19V20H5V18Z" fill="#333"/>
-                        </svg>
-                        下载
-                    </button>
+            <!-- 筛选器 -->
+            <div class="filter-container">
+                <div class="filter-group-left">
+                    <button class="filter-btn selected" data-tag="全部" id="version-all">全部</button>
+                    <button class="filter-btn" data-tag="正式版" id="version-official">正式版</button>
+                    <button class="filter-btn" data-tag="测试版" id="version-test">测试版</button>
+                </div>
+                <!-- 搜索框 -->
+                <form id="search-form" class="search-form">
+                    <input type="text" id="search-input" class="search-input" placeholder="全文搜索……">
+                </form>
+                <div class="filter-group-right">
+                    <button class="filter-btn selected" data-tag="全部" id="version-number-all">全部</button>
+                    <button class="filter-btn" data-tag="1.22" id="version-1.22">1.22</button>
+                    <button class="filter-btn" data-tag="1.21" id="version-1.21">1.21</button>
+                    <button class="filter-btn" data-tag="1.20" id="version-1.20">1.20</button>
+                    <button class="filter-btn" data-tag="1.19" id="version-1.19">1.19</button>
                 </div>
             </div>
-            `;
-            searchResults.innerHTML += resultItem;
-        });
-    }
 
-    searchResults.style.display = 'block';
-});
+            <div id="download-list"></div>
+            <p id="no-more" style="display:none;text-align: center;">没有更多了╮(╯▽╰)╭</p>
 
-renderFiles();
+            <div id="modal" class="modal">
+                <div class="modal-header">分享链接</div>
+                <p id="download-url"></p>
+                <div class="modal-footer">
+                    <button class="btn modal-close">关闭</button>
+                    <button class="btn" id="copy-url">复制链接</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-const filterButtons = document.querySelectorAll('.filter-btn');
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const tag = button.dataset.tag;
-
-        // 版本类型只能选一个（全部，正式版，测试版）
-        if (tag === '全部' || tag === '正式版' || tag === '测试版') {
-            selectedVersion = tag;
-
-            // 取消所有版本类型按钮的选中状态
-            document.querySelectorAll('#version-all, #version-official, #version-test').forEach(btn => btn.classList.remove('selected'));
-            button.classList.add('selected');
-        }
-
-        // 版本号只能选一个
-        if (tag === '全部' || tag.startsWith('1.')) {
-            selectedVersionNumber = tag;
-
-            // 取消所有版本号按钮的选中状态
-            document.querySelectorAll('[id^="version-1."], #version-number-all').forEach(btn => btn.classList.remove('selected'));
-            button.classList.add('selected');
-        }
-
-        // 根据选中的标签渲染文件
-        page = 1;
-        downloadList.innerHTML = '';
-        renderFiles(selectedVersion, selectedVersionNumber, searchInput.value);
-    });
-});
-
-function openShareModal(link) {
-    const baseUrl = "https://usfdown.zuyst.top/";
-    downloadUrl.textContent = baseUrl + link;
-    modal.classList.add('show');
-}
-
-document.querySelector('.modal-close').addEventListener('click', () => {
-    modal.classList.remove('show');
-});
-
-document.getElementById('copy-url').addEventListener('click', () => {
-    navigator.clipboard.writeText(downloadUrl.textContent).then(() => {
-        alert('链接已复制到剪贴板');
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    var downloadItems = document.querySelectorAll('.download-item');
-
-    downloadItems.forEach(function(item) {
-        var p = item.querySelector('p');
-        var showMoreButton = item.querySelector('.show-more');
-
-        var originalHeight = p.scrollHeight;
-        p.style.webkitLineClamp = '3'; 
-        var limitedHeight = p.getBoundingClientRect().height;
-
-        if (originalHeight > limitedHeight) {
-            showMoreButton.style.display = 'inline-block'; 
-        }
-
-        showMoreButton.addEventListener('click', function() {
-            p.classList.toggle('expanded');
-            if (p.classList.contains('expanded')) {
-                this.textContent = '收起';
-            } else {
-                this.textContent = '展开更多';
-            }
-        });
-    });
-});
-
-const announcement = document.getElementById('announcement');
-const closeBtn = document.getElementById('close-btn');
-
-closeBtn.addEventListener('click', () => {
-  announcement.classList.add('hide'); 
-});
-</script>
-
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://s21.ax1x.com/2024/10/04/pA8E8hj.png" alt="Logo" width="100" height="auto">
+            </div>
+            <div class="footer-rights">
+                ©2021-至今 ZUY Studio＆USF开发团队 版权所有All Rights Reserved.
+                <div class="footer-links">
+                    <a href="https://github.com/YYTZ666/usfdown/">GitHub地址</a> |
+                    <a href="https://zuyst.top/user/">免责声明</a> |
+                    <a href="https://zuyst.top">关于我们</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="config/file.js"></script>
+    <script src="config/script.js"></script>
 </body>
+
 </html>
