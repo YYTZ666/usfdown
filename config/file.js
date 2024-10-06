@@ -336,4 +336,12 @@ const files = [
         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
         downloadLink: "/files/main/0.3.3E.zip"
     },
+    {
+        name: "V1-USF0.3.2B",
+        description: "适配1.19.5x",
+        tags: ["正式版", "1.19"],
+        shareLink: "#",
+        feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+        downloadLink: "/files/main/0.3.2B.zip"
+    },
 ];
