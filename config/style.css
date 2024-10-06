@@ -4,6 +4,59 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
+    box-sizing: border-box;
+}
+
+.header,
+.announcement {
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 999;
+}
+
+.header {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideFadeIn 0.8s ease forwards;
+}
+
+.announcement {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 0, 0, 0.9);
+    color: #fff;
+    padding: 10px;
+    top: 50px;
+    z-index: 998;
+    backdrop-filter: blur(5px);
+    transition: top 0.3s ease;
+}
+
+.announcement p {
+    margin: 0;
+}
+
+.announcement.hide {
+    top: -100px;
+}
+
+#close-btn {
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#close-btn:hover {
+    color: #ccc;
 }
 
 .container {
@@ -12,28 +65,20 @@ body {
     padding: 20px;
 }
 
-/* 自适应样式 */
-@media (max-width: 768px) {
-    /* 让筛选按钮在小屏幕下有更好的布局 */
-    .filter-container {
-        justify-content: flex-start; /* 左对齐 */
-    }
+.search-form {
+    display: flex;
+    justify-content: space-around;
+}
 
-    .filter-btn {
-        margin-bottom: 10px; /* 添加按钮之间的竖直间距 */
-        padding: 8px 15px; /* 缩小内边距，适配小屏幕 */
-        flex-grow: 1; /* 让所有按钮有相同的宽度，但不占满行 */
-        max-width: 48%; /* 每行最多放两个按钮，留下间距 */
-    }
+.filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    .filter-category {
-        flex-basis: 100%; /* 类别标题占据整行 */
-        margin-bottom: 10px;
-    }
-    
-    .filter-separator {
-        display: none; /* 在小屏幕上隐藏分隔符，避免视觉拥挤 */
-    }
+.filter-group-left,
+.filter-group-right {
+    display: flex;
 }
 
 .filter-btn {
@@ -52,7 +97,10 @@ body {
     color: white;
 }
 
-/* 下载项样式 */
+#download-list {
+    padding-top: 20px;
+}
+
 .download-item {
     background-color: white;
     border-radius: 15px;
@@ -61,14 +109,14 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    opacity: 0; /* 初始透明 */
-    transform: translateY(20px); /* 初始位置 */
+    opacity: 0;
+    transform: translateY(20px);
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .download-item.show {
     opacity: 1;
-    transform: translateY(0); /* 加载时上升 */
+    transform: translateY(0);
 }
 
 .download-item:hover {
@@ -82,6 +130,16 @@ body {
 
 .download-item p {
     color: #555;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    transition: all 0.3s ease;
+}
+
+.download-item p.expanded {
+    -webkit-line-clamp: unset;
+    overflow: visible;
 }
 
 .download-tags {
@@ -90,17 +148,15 @@ body {
     color: #888;
 }
 
-/* 按钮容器 */
 .button-container {
     position: absolute;
     bottom: 20px;
     right: 20px;
     display: flex;
     gap: 10px;
-    flex-wrap: wrap; /* 确保按钮在小屏幕时能换行 */
+    flex-wrap: wrap;
 }
 
-/* 按钮样式 */
 .btn {
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid white;
@@ -121,8 +177,8 @@ body {
     transform: scale(0.95);
 }
 
-/* 弹出框样式 */
 .modal {
+    z-index: 10000;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -157,114 +213,167 @@ body {
     font-size: 0.8rem;
 }
 
-.modal-close {
-    cursor: pointer;
-}
-
-/* Header 样式 */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  box-sizing: border-box;
-}
-
-.header {
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  box-sizing: border-box;
-  opacity: 0; /* 初始状态透明 */
-  transform: translateY(-20px); /* 初始状态向上偏移 */
-  animation: slideFadeIn 0.8s ease forwards; /* 进入时淡入下滑动画 */
-}
-
 .logo {
-  font-size: 20px;
-  font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .nav a {
-  text-decoration: none;
-  color: #000;
-  margin-left: 15px;
-  font-size: 16px;
+    text-decoration: none;
+    color: #000;
+    margin-left: 15px;
+    font-size: 16px;
 }
 
 .nav a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
-/* 公告栏样式 */
-.announcement {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(255, 0, 0, 0.9);
-  color: #fff;
-  padding: 10px;
-  position: fixed;
-  width: 100%;
-  top: 50px;
-  z-index: 998;
-  backdrop-filter: blur(5px);
-  transition: top 0.3s ease;
-  box-sizing: border-box;
+.footer {
+    background: linear-gradient(to right, #ffffff, #f0f0f0, #ffffff);
+    animation: gradient-marquee 5s infinite linear alternate;
+    background-size: 200% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
 }
 
-.announcement p {
-  margin: 0;
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
 }
 
-#close-btn {
-  cursor: pointer;
-  font-size: 24px;
-  font-weight: bold;
+.footer-logo img {
+    width: 100px;
+    height: auto;
 }
 
-#close-btn:hover {
-  color: #ccc;
+.footer-rights {
+    color: #333;
+    font-size: 16px;
+    text-align: center;
 }
 
-/* 隐藏公告栏的动画 */
-.announcement.hide {
-  top: -100px;
+.footer-links {
+    margin-top: 5px;
 }
 
-/* 淡入下滑动画 */
+.footer-links a {
+    text-decoration: none;
+    color: #007BFF;
+    margin: 0 5px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.show-more {
+    color: #007BFF;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    display: none;
+}
+
+/* */
+.search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #45a049;
+}
+
+/* */
+
+/* 动画 */
 @keyframes slideFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px); /* 向上偏移 */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0); /* 复位 */
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 跑马灯 */
+@keyframes gradient-marquee {
+    0% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
 }
 
 /* 自适应样式 */
 @media (max-width: 768px) {
-    .back-btn {
-        font-size: 0.9rem;
-        padding: 8px 15px;
-    }
 
     .filter-container {
+        display: block;
         flex-wrap: wrap;
         justify-content: space-between;
+    }
+
+    .filter-group-left,
+    .filter-group-right {
+        display: block;
+    }
+
+    .filter-group-right {
+        padding-top: 10px;
+    }
+
+    .filter-btn {
+        margin-bottom: 10px;
+        padding: 8px 15px;
+        flex-grow: 1;
+        max-width: 48%;
     }
 
     .filter-category {
         flex-basis: 100%;
         margin-bottom: 10px;
+    }
+
+    .filter-separator {
+        display: none;
     }
 
     .button-container {
@@ -280,93 +389,9 @@ body {
         font-size: 0.8rem;
         padding: 8px 15px;
     }
-}
 
-/* 简介部分的样式，默认最多显示3行 */
-.download-item p {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    transition: all 0.3s ease;
-}
-
-.download-item p.expanded {
-    -webkit-line-clamp: unset;
-    overflow: visible;
-}
-
-/* 展开/收起按钮样式 */
-.show-more {
-    color: #007BFF;
-    cursor: pointer;
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 0.9rem;
-    text-decoration: underline;
-    display: none;
-}
-
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-.footer {
-  background: linear-gradient(to right, #ffffff, #f0f0f0, #ffffff);
-  animation: gradient-marquee 5s infinite linear; /* 跑马灯动画 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  box-sizing: border-box;
-  overflow: hidden; /* 防止内容溢出 */
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.footer-logo img {
-  width: 100px;
-  height: auto;
-}
-
-.footer-rights {
-  color: #333;
-  font-size: 16px;
-  text-align: center;
-}
-
-.footer-links {
-  margin-top: 5px;
-}
-
-.footer-links a {
-  text-decoration: none;
-  color: #007BFF;
-  margin: 0 5px;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
-/* 跑马灯动画 */
-@keyframes gradient-marquee {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
+    .back-btn {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
 }
