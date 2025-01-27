@@ -1,8 +1,17 @@
 // 数据config
 const files = [
     {
+        name: "USF0.6.34B",
+        description: "适配1.21.5X。",
+        tags: ["正式版", "1.21"],
+        shareLink: "#",
+        feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+        downloadLink: "/files/main/0.6.33B.zip"
+    },
+    
+    {
         name: "USF0.6.33B",
-        description: "适配1.21.40-1.21.42",
+        description: "适配1.21.40-1.21.42。",
         tags: ["正式版", "1.21"],
         shareLink: "#",
         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
@@ -10,7 +19,7 @@ const files = [
     },
     {
         name: "USF0.6.32B",
-        description: "适配1.21.30+ 保守估计可以适配到1.22出来（只要牢微不改API）",
+        description: "适配1.21.30+ 保守估计可以适配到1.22出来（只要牢微不改API）。",
         tags: ["正式版", "1.21"],
         shareLink: "#",
         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
