@@ -6,7 +6,7 @@ const files = [
         tags: ["正式版", "1.21"],
         shareLink: "#",
         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-        downloadLink: "/files/main/0.6.33B.zip"
+        downloadLink: "/files/main/0.6.34B.zip"
     },
     
     {
