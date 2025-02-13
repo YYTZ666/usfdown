@@ -2,7 +2,7 @@
 const files = [
    {
         name: "USF0.6.35B",
-        description: "适配1.21.60。此版本与官方发版不同，修复了R模块未修改@minecraft/server版本定义的问题，请放心使用。",
+        description: "适配1.21.60。",
         tags: ["正式版", "1.21"],
         shareLink: "#",
         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
