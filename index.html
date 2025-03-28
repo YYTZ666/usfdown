@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div class="gradient-banner"></div>
     <div id="announcement" class="announcement">
         <p>USF目前已停止功能性更新，但社区维护仍将继续.请勿相信其他除Minebbs和本站外的下载渠道，其他未经许可直接分发的可能会跑路，并且插件有概率会被篡改可能导致存档损坏！！！</p>
         <span id="close-btn">&times;</span>
@@ -28,27 +29,40 @@
 
             <!-- 筛选器 -->
             <div class="filter-container">
-                <div class="filter-group-left">
-                    <button class="filter-btn selected" data-tag="全部" id="version-all">全部</button>
-                    <button class="filter-btn" data-tag="正式版" id="version-official">正式版</button>
-                    <button class="filter-btn" data-tag="测试版" id="version-test">测试版</button>
+                <div class="search-area">
+                    <form id="search-form" class="search-form">
+                        <input type="text" id="search-input" class="search-input" placeholder="搜索插件版本...">
+                    </form>
+                    <button class="toggle-filters-btn">
+                        筛选选项 <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                    </button>
                 </div>
-                <!-- 搜索框 -->
-                <form id="search-form" class="search-form">
-                    <input type="text" id="search-input" class="search-input" placeholder="搜索版本">
-                </form>
-                <div class="filter-group-right">
-                    <button class="filter-btn selected" data-tag="全部" id="version-number-all">全部</button>
-                    <button class="filter-btn" data-tag="1.22" id="version-1.22">1.22</button>
-                    <button class="filter-btn" data-tag="1.21" id="version-1.21">1.21</button>
-                    <button class="filter-btn" data-tag="1.20" id="version-1.20">1.20</button>
-                    <button class="filter-btn" data-tag="1.19" id="version-1.19">1.19</button>
+                <div class="filter-groups collapsed">
+                    <div class="filter-group">
+                        <div class="filter-label">版本类型</div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn selected" data-tag="全部" id="version-all">全部</button>
+                            <button class="filter-btn" data-tag="正式版" id="version-official">正式版</button>
+                            <button class="filter-btn" data-tag="测试版" id="version-test">测试版</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <div class="filter-label">游戏版本</div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn selected" data-tag="全部" id="version-number-all">全部</button>
+                            <button class="filter-btn" data-tag="1.22" id="version-1.22">1.22</button>
+                            <button class="filter-btn" data-tag="1.21" id="version-1.21">1.21</button>
+                            <button class="filter-btn" data-tag="1.20" id="version-1.20">1.20</button>
+                            <button class="filter-btn" data-tag="1.19" id="version-1.19">1.19</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div id="download-list"></div>
-            <p id="no-more" style="display:none;text-align: center;">没有更多了╮(╯▽╰)╭</p>
+            <p id="no-more">已经到底啦 (｡･ω･｡)</p>
 
+            <div class="modal-overlay"></div>
             <div id="modal" class="modal">
                 <div class="modal-header">分享链接</div>
                 <p id="download-url"></p>
