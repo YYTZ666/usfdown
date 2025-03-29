@@ -1,6 +1,6 @@
 const ads = [
     {
-        title: "USF文档实用指南",
+        title: "USF文档--你的实用指南",
         description: "功能介绍，使用方法，常见问题，以及更多。",
         buttonText: "让我康康！",
         buttonLink: "https://usfpack.site",
@@ -10,7 +10,7 @@ const ads = [
     },
     {
         title: "USFLog Plus",
-        description: "一款实用的USF日志分析工具，提升维护效率",
+        description: "一款实用的USF日志后端程序，提升服主管理效率",
         buttonText: "了解更多",
         buttonLink: "https://usflogplus.zuyst.top",
         type: "tool",
