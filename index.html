@@ -9,72 +9,85 @@
 </head>
 
 <body>
-    <div class="gradient-banner"></div>
-    <div id="announcement" class="announcement">
-        <p>USF目前将由社区维护更新，适配更新效率可能有所减慢.请勿相信其他除Minebbs和本站外的下载渠道，其他未经许可直接分发的可能会跑路，并且插件有概率会被篡改可能导致存档损坏！！！</p>
+    <div class="gradient-banner" role="presentation"></div>
+    <div id="announcement" class="announcement" role="alert" aria-live="polite">
+        <p>USF目前已停止功能性更新，但社区维护仍将继续.请勿相信其他除Minebbs和本站外的下载渠道，其他未经许可直接分发的可能会跑路，并且插件有概率会被篡改可能导致存档损坏！！！</p>
         <span id="close-btn">&times;</span>
     </div>
 
     <!-- Header -->
-    <header class="header">
-        <div class="logo">USF插件下载站</div>
-        <nav class="nav">
-            <a target="_blank" href="https://usflogplus.zuyst.top">USFLog-Plus</a>
-            <a target="_blank" href="https://www.usfpack.site">USF文档站</a>
+    <header class="header" role="banner">
+        <div class="logo" role="heading" aria-level="1">USF插件下载站</div>
+        <nav class="nav" role="navigation" aria-label="主导航">
+            <a target="_blank" href="https://usflogplus.zuyst.top" aria-label="访问USFLog-Plus">USFLog-Plus</a>
+            <a target="_blank" href="https://www.usfpack.site" aria-label="访问USF文档站">USF文档站</a>
         </nav>
     </header>
 
-    <section style="margin-top:50px;">
+    <section style="margin-top:50px;" role="main">
         <div class="container">
 
             <!-- 筛选器 -->
-            <div class="filter-container">
+            <div class="filter-container" role="search">
+                <!-- 搜索和切换按钮 -->
                 <div class="search-area">
-                    <form id="search-form" class="search-form">
-                        <input type="text" id="search-input" class="search-input" placeholder="搜索插件版本...">
+                    <form id="search-form" class="search-form" role="search">
+                        <input type="text" 
+                               id="search-input" 
+                               class="search-input" 
+                               placeholder="输入USF版本号或你的MC客户端版本（X.XX.XX）即可检索" 
+                               aria-label="搜索插件版本">
                     </form>
-                    <button class="toggle-filters-btn">
-                        筛选选项 <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                    <button class="toggle-filters-btn" 
+                            aria-expanded="false" 
+                            aria-controls="filter-options">
+                        筛选选项 
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M7 10l5 5 5-5z"/>
+                        </svg>
                     </button>
                 </div>
-                <div class="filter-groups collapsed">
-                    <div class="filter-group">
-                        <div class="filter-label">版本类型</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn selected" data-tag="全部" id="version-all">全部</button>
-                            <button class="filter-btn" data-tag="正式版" id="version-official">正式版</button>
-                            <button class="filter-btn" data-tag="测试版" id="version-test">测试版</button>
+                
+                <!-- 筛选选项 -->
+                <div class="filter-groups">
+                    <div class="filter-group" role="group" aria-label="版本类型">
+                        <div class="filter-group-title">版本类型</div>
+                        <div class="filter-buttons" role="radiogroup" aria-labelledby="version-type-label">
+                            <button class="filter-btn selected" data-tag="全部">全部</button>
+                            <button class="filter-btn" data-tag="正式版">正式版</button>
+                            <button class="filter-btn" data-tag="测试版">测试版</button>
                         </div>
                     </div>
-                    <div class="filter-group">
-                        <div class="filter-label">游戏版本</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn selected" data-tag="全部" id="version-number-all">全部</button>
-                            <button class="filter-btn" data-tag="1.22" id="version-1.22">1.22</button>
-                            <button class="filter-btn" data-tag="1.21" id="version-1.21">1.21</button>
-                            <button class="filter-btn" data-tag="1.20" id="version-1.20">1.20</button>
-                            <button class="filter-btn" data-tag="1.19" id="version-1.19">1.19</button>
+                    
+                    <div class="filter-group" role="group" aria-label="游戏版本">
+                        <div class="filter-group-title">游戏版本</div>
+                        <div class="filter-buttons" role="radiogroup" aria-labelledby="game-version-label">
+                            <button class="filter-btn selected" data-tag="全部">全部</button>
+                            <button class="filter-btn" data-tag="1.22">1.22</button>
+                            <button class="filter-btn" data-tag="1.21">1.21</button>
+                            <button class="filter-btn" data-tag="1.20">1.20</button>
+                            <button class="filter-btn" data-tag="1.19">1.19</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="download-list"></div>
-            <p id="no-more">已经到底啦 (｡･ω･｡)</p>
+            <div id="download-list" role="list" aria-label="插件下载列表"></div>
+            <p id="no-more" role="status" aria-live="polite">已经到底啦 (｡･ω･｡)</p>
 
-            <div class="modal-overlay"></div>
-            <div id="modal" class="modal">
-                <div class="modal-header">分享链接</div>
-                <p id="download-url"></p>
+            <div class="modal-overlay" role="presentation"></div>
+            <div id="modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+                <div id="modal-title" class="modal-header">分享链接</div>
+                <p id="download-url" role="textbox" aria-readonly="true"></p>
                 <div class="modal-footer">
-                    <button class="btn modal-close">关闭</button>
-                    <button class="btn" id="copy-url">复制链接</button>
+                    <button class="btn modal-close" aria-label="关闭对话框">关闭</button>
+                    <button class="btn" id="copy-url" aria-label="复制链接">复制链接</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="footer-content">
             <div class="footer-logo">
                 <img src="https://s21.ax1x.com/2024/10/04/pA8E8hj.png" alt="Logo" width="100" height="auto">
@@ -82,14 +95,16 @@
             <div class="footer-rights">
                 ©2021-至今 ZUY Studio＆USF开发团队 版权所有All Rights Reserved.
                 <div class="footer-links">
-                    <a href="https://github.com/YYTZ666/usfdown/">GitHub地址</a> |
-                    <a href="https://zuyst.top/user/">免责声明</a> |
+                    <a href="https://github.com/YYTZ666/">由Stuwin强势驱动</a> |
+                    <a href="https://zuyst.top/about/user">免责声明</a> |
                     <a href="https://zuyst.top">关于我们</a>
                 </div>
             </div>
         </div>
     </footer>
+    <script src="config/accessibility.js"></script>
     <script src="config/file.js"></script>
+    <script src="config/ad.js"></script>
     <script src="config/script.js"></script>
 </body>
 
