@@ -1,12 +1,12 @@
 // 数据config
 const files = [
    {
-        name: "USF0.6.36B",
-        description: "作者宣布停更后的第一个社区维护版本。适配1.21.70，增加了出入领地时的玩家游戏模式切换。",
+        name: "USF0.7.1C",
+        description: "作者宣布停更后的第一个社区维护版本。适配1.21.70，增加了出入领地时的玩家游戏模式切换。此版本也有0.6.36B的别称",
         tags: ["正式版", "1.21"],
         shareLink: "#",
         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-        downloadLink: "/files/main/0.6.36B.zip"
+        downloadLink: "/files/main/0.7.1C.zip"
     },
    {
         name: "USF0.6.35B",
