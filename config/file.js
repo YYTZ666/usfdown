@@ -1,8 +1,25 @@
 // 数据config
 const files = [
    {
+        name: "USF0.7.2C",
+        description: "修复了上个版本传送功能无法正常运作的问题。更多信息请点击详情。",
+        changelog: [
+            "修复了上个版本传送功能无法正常运作的问题。",
+        ],
+        contributors: [
+            "USF开发团队",
+            "XiaoXiaoYang",
+            "Antonbin"
+        ],
+        supportVersions: ["1.21.70"],
+        releaseDate: "2025-03-30",
+        tags: ["测试版", "1.21"],
+        downloadLink: "/files/main/USF0.7.2C.zip",
+        feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+    },
+   {
         name: "USF0.7.1C",
-        description: "作者宣布停更后的第一个社区维护版本。适配1.21.70，更多信息请点击详情。",
+        description: "作者宣布停更后的第一个社区维护版本。适配1.21.70.此版本存在功能缺陷更多信息请点击详情。",
         changelog: [
             "1. 增加出入领地时的玩家游戏模式切换",
             "2. 修复了一些已知问题",
@@ -14,7 +31,7 @@ const files = [
         ],
         supportVersions: ["1.21.70"],
         releaseDate: "2025-03-27",
-        tags: ["正式版", "1.21"],
+        tags: ["测试版", "1.21"],
         downloadLink: "/files/main/0.7.1C.zip",
         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
         importantTip: "此版本传送功能存在缺陷，请使用更新版本（0.7.2C)"
