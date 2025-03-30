@@ -11,7 +11,7 @@ const files = [
             "XiaoXiaoYang",
             "Antonbin"
         ],
-        supportVersions: ["1.21.70"],
+        supportVersions: ["1.21.70", "1.21.71", "1.21.72"],
         releaseDate: "2025-03-30",
         tags: ["测试版", "1.21"],
         downloadLink: "/files/main/USF0.7.2C.zip",
