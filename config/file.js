@@ -1,6 +1,23 @@
 // 数据config
 const files = [
    {
+        name: "USF0.7.3C",
+        description: "修复了上个版本操作的问题问题。更多信息请点击详情。",
+        changelog: [
+            "1.管理界面-插件设置-其他功能新增其他模组支持选项，打开后遵循规范的模组在没有权限的领地内将无法使用模组的功能2.修复管理界面-性能检测的tps始终显示为20的问题",
+        ],
+        contributors: [
+            "USF开发团队",
+            "XiaoXiaoYang",
+            "Antonbin"
+        ],
+        supportVersions: ["1.21.70", "1.21.71", "1.21.72"],
+        releaseDate: "2025-4-3",
+        tags: ["测试版", "1.21"],
+        downloadLink: "/files/main/USF0.7.3C.zip",
+        feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+    },
+   {
         name: "USF0.7.2C",
         description: "修复了上个版本传送功能无法正常运作的问题。更多信息请点击详情。",
         changelog: [
