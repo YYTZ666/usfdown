@@ -1,6 +1,31 @@
 // 数据config
 const files = [
    {
+        name: "USF0.7.4C",
+        description: "修复了若干问题。更多信息请点击详情。",
+        changelog: [
+            "重构了部分函数以提高插件性能",
+            "修复在视角跟踪下因服务器卡顿导致夜视结束后延迟生效的问题",
+            "修复视角跟踪第一视角无法使用的问题",
+            "修复视角跟踪自由视角无法使用的问题",
+            "修复视角跟踪被跟踪玩家退出后持续报错的问题",
+            "修复Sign变更检测和箱子物品变动检测功能无法使用的问题",
+            "修复聊天设置，聊天对象不可用的问题",
+            "修复玩家未完全进入服务器时偶尔导致的报错"
+        ],
+        contributors: [
+            "USF开发团队",
+            "XiaoXiaoYang",
+            "Antonbin"
+        ],
+        supportVersions: ["1.21.70", "1.21.71", "1.21.72"],
+        releaseDate: "2025-4-6",
+        tags: ["测试版", "1.21"],
+        downloadLink: "/files/main/USF0.7.4C.zip",
+        feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+    },
+   
+   {
         name: "USF0.7.3C",
         description: "修复了上个版本操作的问题问题。更多信息请点击详情。",
         changelog: [
