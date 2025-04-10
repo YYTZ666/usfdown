@@ -319,10 +319,14 @@ document.addEventListener('DOMContentLoaded', () => {
 function openDetailsModal(name) {
     const version = files.find(f => f.name === name);
     if (!version) return;
-    // 新增：如果 version.importantTip 存在，则生成重要提示区域
     let importantTipHtml = '';
     if (version.importantTip) {
         importantTipHtml = `<div class="details-section important-tip"><h4>重要提示</h4><p>${version.importantTip}</p></div>`;
+    }
+    // 新增：紧急更新标识
+    let urgentUpdateHtml = '';
+    if (version.urgentUpdate) {
+        urgentUpdateHtml = `<div class="details-section urgent-update"><h4>紧急更新</h4><p>此版本为紧急更新，请尽快更新！</p></div>`;
     }
     const detailsModal = document.createElement('div');
     detailsModal.className = 'modal details-modal';
@@ -341,6 +345,7 @@ function openDetailsModal(name) {
                 </span>
                 ` : ''}
             </div>
+            ${urgentUpdateHtml}
             ${importantTipHtml}
             <div class="details-section">
                 <h4>更新日志</h4>
