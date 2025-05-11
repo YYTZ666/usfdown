@@ -1,5 +1,25 @@
 // 数据config
 const files = [
+        {
+         name: "USF0.7.5CFix",
+         description: "适配1.21.80，修复了若干问题。更多信息请点击详情。",
+         changelog: [
+             "优化了JSON格式",
+             "修复部分窗口无法打开的bug",
+             "适配1.21.80"
+         ],
+         contributors: [
+             "USF开发团队",
+             "dyf189"
+         ],
+         supportVersions: ["1.21.80"],
+         releaseDate: "2025-5-11",
+         tags: ["测试版", "1.21"],
+         downloadLink: "/files/main/USF0.7.5CFix.zip",
+         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+         urgentUpdate: true   // 标记为紧急更新
+     },
+    
     {
          name: "USF0.7.4C",
          description: "修复了若干问题。更多信息请点击详情。",
