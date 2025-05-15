@@ -1,6 +1,14 @@
 // 数据config
 const files = [
         {
+         name: "USF0.7.6CFix",
+         description: "适配1.21.80，(本次更新为可选紧急更新)修复无法放置悬浮字的bug",
+         changelog: [
+             "(本次更新为可选紧急更新)",
+             "修复无法放置悬浮字的bug",
+             "适配1.21.80"
+         ],
+        {
          name: "USF0.7.5CFix",
          description: "适配1.21.80，修复了若干问题。更多信息请点击详情。",
          changelog: [
