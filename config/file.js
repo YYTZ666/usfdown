@@ -13,7 +13,7 @@ const files = [
              "dyf189"
          ],
          supportVersions: ["1.21.80"],
-         releaseDate: "2025-5-11",
+         releaseDate: "2025-5-15",
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.6CFix.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
