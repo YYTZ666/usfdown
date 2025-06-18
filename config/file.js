@@ -4,8 +4,8 @@ const files = [
          name: "USF0.7.7",
          description: "适配1.21.90",
          changelog: [
-                 "(本次更新为可选紧急更新)",
-             "适配1.21.80"
+                 "(本次更新为紧急更新)",
+             "适配1.21.90"
          ],
          contributors: [
              "USF开发团队",
