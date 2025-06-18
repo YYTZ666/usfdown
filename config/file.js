@@ -11,7 +11,7 @@ const files = [
              "USF开发团队",
              "qcbby"
          ],
-         supportVersions: ["1.21.*0"],
+         supportVersions: ["1.21.90"],
          releaseDate: "2025-6-18",
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.7.zip",
