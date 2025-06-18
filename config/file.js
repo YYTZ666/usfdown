@@ -1,6 +1,24 @@
 // 数据config
 const files = [
         {
+         name: "USF0.7.7",
+         description: "适配1.21.90",
+         changelog: [
+                 "(本次更新为可选紧急更新)",
+             "适配1.21.80"
+         ],
+         contributors: [
+             "USF开发团队",
+             "qcbby"
+         ],
+         supportVersions: ["1.21.*0"],
+         releaseDate: "2025-6-18",
+         tags: ["测试版", "1.21"],
+         downloadLink: "/files/main/USF0.7.7.zip",
+         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+         urgentUpdate: true   // 标记为紧急更新
+     },
+        {
          name: "USF0.7.6CFix",
          description: "适配1.21.80，修复无法放置悬浮字的bug",
          changelog: [
