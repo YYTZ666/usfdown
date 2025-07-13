@@ -8,9 +8,10 @@ const files = [
              "修复了小木斧无法使用的bug"
          ],
          contributors: [
-             "USF开发团队"
+             "USF开发团队",
+             "EarthDLL"
          ],
-         supportVersions: ["1.21.9x"],
+         supportVersions: ["1.21.90","1.21.92","1.21.93"],
          releaseDate: "2025-7-13",
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.8.zip",
