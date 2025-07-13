@@ -5,8 +5,7 @@ const files = [
          description: "适配1.21.9x 修复了小木斧无法使用的bug，修复了部分ui界面异常的问题",
          changelog: [
                  "修复了小木斧无法使用的bug",
-             "修复了部分ui界面异常的问题
-"
+             "修复了部分ui界面异常的问题"
          ],
          contributors: [
              "USF开发团队"
