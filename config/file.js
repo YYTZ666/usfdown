@@ -2,16 +2,16 @@
 const files = [
         {
          name: "USF0.7.8",
-         description: "适配1.21.9x 修复了小木斧无法使用的bug，修复了部分ui界面异常的问题",
+         description: "适配1.21.9x，修复了部分ui界面异常的问题，修复了小木斧无法使用的bug",
          changelog: [
-                 "修复了小木斧无法使用的bug",
-             "修复了部分ui界面异常的问题"
+                 "修复了部分ui界面异常的问题",
+             "修复了小木斧无法使用的bug"
          ],
          contributors: [
              "USF开发团队"
          ],
          supportVersions: ["1.21.9x"],
-         releaseDate: "2025-7-13",
+         releaseDate: "2025-6-18",
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.8.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
