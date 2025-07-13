@@ -11,7 +11,7 @@ const files = [
              "USF开发团队"
          ],
          supportVersions: ["1.21.9x"],
-         releaseDate: "2025-6-18",
+         releaseDate: "2025-7-13",
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.8.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
