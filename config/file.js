@@ -14,7 +14,7 @@ const files = [
          supportVersions: ["1.21.90","1.21.92","1.21.93"],
          releaseDate: "2025-7-13",
          tags: ["测试版", "1.21"],
-         downloadLink: "/files/main/USF0.7.8.zip",
+         downloadLink: "/files/main/0.7.8.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
          urgentUpdate: true   // 标记为紧急更新
      },
