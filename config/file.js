@@ -1,6 +1,23 @@
 // 数据config
 const files = [
         {
+         name: "USF0.7.10SFlx",
+         description: "修复bug更多内容请查看详情",
+         changelog: [
+                 "修复了视角跟踪无法使用的问题",
+                 "修复因为视角跟踪报错连带游戏无法初始化，无法打开菜单的问题"
+         ],
+         contributors: [
+             "USF开发团队"
+         ],
+         supportVersions: ["1.21.90","1.21.92","1.21.93"],
+         releaseDate: "2025-7-20",
+         tags: ["测试版", "1.21"],
+         downloadLink: "/files/main/USF0.7.10SFlx.zip",
+         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+         urgentUpdate: true  // 标记为紧急更新
+     },
+        {
          name: "USF0.7.9S",
          description: "修复了小木斧替换功能无法使用的bug",
          changelog: [
