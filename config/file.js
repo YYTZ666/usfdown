@@ -1,7 +1,7 @@
 // 数据config
 const files = [
         {
-         name: "USF0.7.10Fix.zip",
+         name: "USF0.7.10Fix2.zip",
          description: "修复bug更多内容请查看详情",
          changelog: [
                  "修复了视角跟踪无法使用的问题",
@@ -13,7 +13,7 @@ const files = [
          supportVersions: ["1.21.90","1.21.92","1.21.93"],
          releaseDate: "2025-7-20",
          tags: ["测试版", "1.21"],
-         downloadLink: "/files/main/USF0.7.10Fix.zip",
+         downloadLink: "/files/main/USF0.7.10Fix2.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
          urgentUpdate: true  // 标记为紧急更新
      },
