@@ -2,6 +2,23 @@
 
 const files = [
         {
+         name: "USF0.7.12S.zip",
+         description: "修复bug兼容1.21.100",
+         changelog: 
+        [
+                 "兼容1.21.100"
+        ],
+         contributors: [
+             "USF开发团队"
+         ],
+         supportVersions: ["1.21.100"],
+         releaseDate: "2025-8-7",
+         tags: ["测试版", "1.21"],
+         downloadLink: "/files/main/USF0.7.12S.zip",
+         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+         urgentUpdate: false  // 标记为紧急更新
+     },
+        {
          name: "USF0.7.11S.zip",
          description: "修复bug兼容1.21.9X，更多内容请查看详情",
          changelog: 
