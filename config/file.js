@@ -4,8 +4,9 @@ const files = [
 
         {
          name: "USF0.7.13",
-         description: "新增功能/修复bug.并且同时支持1.21.9x和1.21.10x两个版本更多内容请查看详情",
-         changelog: [
+         description: "新增功能，修复bug.并且同时支持1.21.9x和1.21.10x两个版本更多内容请查看详情",
+         changelog:
+        [
                  "1.修复了自定义物品属性中击退无法使用的bug",
                  "2.修复了usf命令knock无法使用的bug",
                  "3.增加初始化成功的提示",
