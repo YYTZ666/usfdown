@@ -20,7 +20,7 @@ const files = [
          downloadLink: "/files/main/USF0.7.13.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
          urgentUpdate: true  // 标记为紧急更新
-     }
+     },
         {
          name: "USF0.7.12S.zip",
          description: "修复bug兼容1.21.100",
