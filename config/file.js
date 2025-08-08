@@ -1,6 +1,26 @@
 // 数据config
 
 const files = [
+
+        {
+         name: "USF0.7.13",
+         description: "新增功能/修复bug.并且同时支持1.21.9x和1.21.10x两个版本更多内容请查看详情",
+         changelog: [
+                 "1.修复了自定义物品属性中击退无法使用的bug",
+                 "2.修复了usf命令knock无法使用的bug",
+                 "3.增加初始化成功的提示",
+                 "4.优化了签到命令设置界面的提示"
+         ],
+         contributors: [
+             "USF开发团队"
+         ],
+         supportVersions: ["1.21.90","1.21.92","1.21.93","1.21.94","1.21.100"],
+         releaseDate: "2025-8-8",
+         tags: ["测试版", "1.21"],
+         downloadLink: "/files/main/USF0.7.13.zip",
+         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+         urgentUpdate: true  // 标记为紧急更新
+     }
         {
          name: "USF0.7.12S.zip",
          description: "修复bug兼容1.21.100",
@@ -29,7 +49,7 @@ const files = [
          contributors: [
              "USF开发团队"
          ],
-         supportVersions: ["1.21.90","1.21.92","1.21.93"],
+         supportVersions: ["1.21.90","1.21.92","1.21.93","1.21.94"],
          releaseDate: "2025-7-25",
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.11S.zip",
