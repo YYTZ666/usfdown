@@ -1,7 +1,24 @@
 // 数据config
 
 const files = [
-
+        {
+         name: "USF0.7.13F",
+         description: "修复bug，更多内容请查看详情",
+         changelog:
+        [
+                 "1.修复了特殊命令knock参数异常的问题",
+                 "2.新增小木斧快速建造的开关，默认关闭"
+         ],
+         contributors: [
+             "USF开发团队"
+         ],
+         supportVersions: ["1.21.90","1.21.92","1.21.93","1.21.94","1.21.100"],
+         releaseDate: "2025-8-9",
+         tags: ["测试版", "1.21"],
+         downloadLink: "/files/main/USF0.7.13F.zip",
+         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+         urgentUpdate: false // 标记为紧急更新
+     },
         {
          name: "USF0.7.13",
          description: "新增功能，修复bug.并且同时支持1.21.9x和1.21.10x两个版本更多内容请查看详情",
