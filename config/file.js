@@ -2,6 +2,24 @@
 
 const files = [
         {
+         name: "USF0.7.14C",
+         description: "玩家互传加入了动画传送（默认关闭），可以在插件设置的传送设置调整",
+         changelog:
+        [
+                 "玩家互传加入了动画传送（默认关闭），可以在插件设置的传送设置调整",
+                 "兼容1.21.9x 1.21.10x"
+         ],
+         contributors: [
+             "USF开发团队"
+         ],
+         supportVersions: ["1.21.90","1.21.92","1.21.93","1.21.94","1.21.100"],
+         releaseDate: "2025-8-13",
+         tags: ["测试版", "1.21"],
+         downloadLink: "/files/main/USF0.7.14C.zip",
+         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+         urgentUpdate: false // 标记为紧急更新
+     },
+        {
          name: "USF0.7.13F",
          description: "修复bug，更多内容请查看详情",
          changelog:
@@ -40,7 +58,7 @@ const files = [
          urgentUpdate: false // 标记为紧急更新
      },
         {
-         name: "USF0.7.12S.zip",
+         name: "USF0.7.12S",
          description: "修复bug兼容1.21.100",
          changelog: 
         [
@@ -57,7 +75,7 @@ const files = [
          urgentUpdate: false  // 标记为紧急更新
      },
         {
-         name: "USF0.7.11S.zip",
+         name: "USF0.7.11S",
          description: "修复bug兼容1.21.9X，更多内容请查看详情",
          changelog: 
         [
@@ -76,7 +94,7 @@ const files = [
      },
 
         {
-         name: "USF0.7.10Fix2.zip",
+         name: "USF0.7.10Fix2",
          description: "修复bug更多内容请查看详情",
          changelog: [
                  "修复了视角跟踪无法使用的问题",
