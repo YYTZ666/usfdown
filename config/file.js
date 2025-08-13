@@ -10,7 +10,8 @@ const files = [
                  "兼容1.21.9x 1.21.10x"
          ],
          contributors: [
-             "USF开发团队"
+             "USF开发团队",
+             "小洋骢"
          ],
          supportVersions: ["1.21.90","1.21.92","1.21.93","1.21.94","1.21.100"],
          releaseDate: "2025-8-13",
