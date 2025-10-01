@@ -2,6 +2,24 @@
 
 const files = [
         {
+         name: "USF0.7.15B",
+         description: "玩家互传加入了动画传送（默认关闭），可以在插件设置的传送设置调整",
+         changelog:
+        [
+                 "玩家互传加入了动画传送（默认关闭），可以在插件设置的传送设置调整",
+                 "兼容1.21.111"
+         ],
+         contributors: [
+             "USF开发团队"
+         ],
+         supportVersions: ["1.21.111"],
+         releaseDate: "2025-9-29",
+         tags: ["测试版", "1.21"],
+         downloadLink: "/files/main/USF0.7.15B.zip",
+         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+         urgentUpdate: false // 标记为紧急更新
+     },
+        {
          name: "USF0.7.14C",
          description: "玩家互传加入了动画传送（默认关闭），可以在插件设置的传送设置调整",
          changelog:
