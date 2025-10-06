@@ -3,7 +3,7 @@
 const files = [
         {
          name: "USF0.7.15B",
-         description: "适配1.21.111",
+         description: "适配1.21.111 修复了日志系统无法使用的问题",
          changelog:
         [
                  "修复了日志系统无法使用的问题",
