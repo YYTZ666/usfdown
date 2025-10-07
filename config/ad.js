@@ -3,7 +3,7 @@ const ads = [
         title: "USF文档--你的实用指南",
         description: "功能介绍，使用方法，常见问题，以及更多。",
         buttonText: "让我康康！",
-        buttonLink: "https://usfpack.site",
+        buttonLink: "https://usfdocs.usframeteam.top/",
         type: "community",
         isAd: false, // 不是广告,是推荐
         badgeText: "推荐" // 自定义标签
