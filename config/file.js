@@ -1,8 +1,7 @@
 // 数据config
 
 const files = [
-恢复代码
-        {
+     {
          name: "USF0.7.17B",
          description: "适配1.21.120",
          changelog:
