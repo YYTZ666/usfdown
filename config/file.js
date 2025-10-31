@@ -1,12 +1,13 @@
 // 数据config
 
 const files = [
+恢复代码
         {
-         name: "USF0.7.16F",
-         description: "适配1.21.111 修复了日志系统无法使用的问题",
+         name: "USF0.7.17B",
+         description: "适配1.21.120,
          changelog:
         [
-                 "修复了日志系统无法使用的问题",
+                 "适配1.21.120",
          ],
          contributors: [
              "USF开发团队"
@@ -14,7 +15,7 @@ const files = [
          supportVersions: ["1.21.111"],
          releaseDate: "2025-10-6",
          tags: ["测试版", "1.21"],
-         downloadLink: "/files/main/USF0.7.16F.zip",
+         downloadLink: "/files/main/USF0.7.17B.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
          urgentUpdate: true // 标记为紧急更新
      },
