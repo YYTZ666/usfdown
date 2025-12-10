@@ -2,6 +2,23 @@
 
 const files = [
      {
+         name: "USF0.7.18B",
+         description: "适配1.21.130",
+         changelog:
+        [
+                 "适配1.21.130",
+         ],
+         contributors: [
+             "USF开发团队"
+         ],
+         supportVersions: ["1.21.130"],
+         releaseDate: "2025-12-10",
+         tags: ["测试版", "1.21"],
+         downloadLink: "/files/main/USF0.7.18B.zip",
+         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+         urgentUpdate: true // 标记为紧急更新
+     },
+     {
          name: "USF0.7.17B",
          description: "适配1.21.120",
          changelog:
@@ -11,7 +28,7 @@ const files = [
          contributors: [
              "USF开发团队"
          ],
-         supportVersions: ["1.21.111"],
+         supportVersions: ["1.21.120"],
          releaseDate: "2025-10-6",
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.17B.zip",
