@@ -1,5 +1,3 @@
-// 数据config
-
 const files = [
      {
          name: "USF0.7.18B",
@@ -16,7 +14,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.18B.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: true // 标记为紧急更新
+         urgentUpdate: true
      },
      {
          name: "USF0.7.17B",
@@ -33,7 +31,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.17B.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: true // 标记为紧急更新
+         urgentUpdate: true
      },
         {
          name: "USF0.7.15B",
@@ -50,7 +48,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.15B.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: false // 标记为紧急更新
+         urgentUpdate: false
      },
         {
          name: "USF0.7.14C",
@@ -69,7 +67,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.14C.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: false // 标记为紧急更新
+         urgentUpdate: false
      },
         {
          name: "USF0.7.13F",
@@ -87,7 +85,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.13F.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: false // 标记为紧急更新
+         urgentUpdate: false
      },
         {
          name: "USF0.7.12S",
@@ -104,7 +102,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.12S.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: false  // 标记为紧急更新
+         urgentUpdate: false
      },
         {
          name: "USF0.7.11S",
@@ -122,7 +120,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.11S.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: false  // 标记为紧急更新
+         urgentUpdate: false
      },
 
         {
@@ -140,7 +138,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.10Fix2.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: true  // 标记为紧急更新
+         urgentUpdate: true
      },
         {
          name: "USF0.7.9S",
@@ -156,7 +154,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.9S(可选).zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: false  // 标记为紧急更新
+         urgentUpdate: false
      },
         {
          name: "USF0.7.8",
@@ -173,7 +171,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/0.7.8.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: false   // 标记为紧急更新
+         urgentUpdate: false
      },
         {
          name: "USF0.7.7",
@@ -191,7 +189,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.7.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: true   // 标记为紧急更新
+         urgentUpdate: true
      },
         {
          name: "USF0.7.6CFix",
@@ -210,7 +208,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.6CFix.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: true   // 标记为紧急更新
+         urgentUpdate: true
      },
         {
          name: "USF0.7.5CFix",
@@ -229,7 +227,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.5CFix.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: true   // 标记为紧急更新
+         urgentUpdate: true
      },
     
     {
@@ -255,7 +253,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.4C.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: true   // 新增：标记为紧急更新
+         urgentUpdate: true
      },
     
     {
