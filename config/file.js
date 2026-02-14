@@ -1,4 +1,21 @@
 const files = [
+    {
+         name: "USF0.7.19B",
+         description: "修复时间获取问题",
+         changelog:
+        [
+                 "修复了服务器获取时间错误的Bug，本次更新默认适配1.21.120及以上的全部Minecraft版本",
+         ],
+         contributors: [
+             "USF开发团队"
+         ],
+         supportVersions: ["1.21.120", "1.21.130","26.x"],
+         releaseDate: "2025-12-10",
+         tags: ["测试版", "1.21"],
+         downloadLink: "/files/main/USF0.7.19B.zip",
+         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+         urgentUpdate: false
+     },
      {
          name: "USF0.7.18B",
          description: "适配1.21.130",
@@ -14,7 +31,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.18B.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: true
+         urgentUpdate: false
      },
      {
          name: "USF0.7.17B",
@@ -31,7 +48,7 @@ const files = [
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.17B.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: true
+         urgentUpdate: false
      },
         {
          name: "USF0.7.15B",
