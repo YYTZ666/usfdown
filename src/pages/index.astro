@@ -1,0 +1,186 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../assets/style.css';
+
+const currentYear = new Date().getFullYear();
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USF 下载中心</title>
+    <ViewTransitions />
+</head>
+<body>
+    <svg style="display: none;">
+        <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </symbol>
+        <symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+        </symbol>
+        <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <rect x="9" y="9" width="13" height="13"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </symbol>
+        <symbol id="icon-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </symbol>
+        <symbol id="icon-theme" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </symbol>
+        <symbol id="icon-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+        </symbol>
+    </svg>
+
+    <header class="header"> 
+         <div class="team-info"> 
+             <button class="mobile-menu-toggle" aria-label="打开菜单">☰</button> 
+             
+             <div class="logo-and-name"> 
+                 <img src="https://www.usframeteam.top/static/pictures/USFLogo.png" alt="USF Logo" class="team-logo" /> 
+                 <a href="/" class="team-name">USFrameTeam</a> 
+             </div> 
+             
+             <div class="header-actions desktop-only"> 
+                 <a href="https://github.com/USFrameTeam" class="github-link" target="_blank" aria-label="访问USFrameTeam的GitHub仓库"> 
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> 
+                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path> 
+                     </svg> 
+                 </a> 
+                 <button class="theme-toggle" id="theme-toggle" aria-label="切换深色模式">🌓</button> 
+             </div> 
+         </div> 
+     </header> 
+ 
+     <nav class="top-nav"> 
+         <div class="nav-links"> 
+             <a href="https://www.usframeteam.top/index.html" class="nav-link">首页</a> 
+             <div class="products-dropdown"> 
+                 <a class="products-link">产品</a> 
+                 <div class="dropdown-content"> 
+                     <a href="https://www.usframeteam.top/usfv1.html" class="dropdown-item">USFv1</a> 
+                     <a href="https://www.usframeteam.top/usfv2.html" class="dropdown-item">USFv2</a> 
+                 </div> 
+             </div> 
+             <a href="https://usfdoc.pages.dev/" class="nav-link">文档</a> 
+             <a href="/" class="nav-link active">下载</a> 
+             <a href="https://www.usframeteam.top/news/index.html" class="nav-link">新闻</a> 
+             <a href="https://www.usframeteam.top/about.html" class="nav-link">关于我们</a> 
+             <a href="https://www.usframeteam.top/eula.html" class="nav-link">用户协议</a> 
+         </div> 
+     </nav>
+
+    <div class="mobile-sidebar" id="mobile-sidebar">
+        <div class="sidebar-header">
+            <img src="https://www.usframeteam.top/static/pictures/USFLogo.png" alt="USF Logo" class="team-logo" />
+            <button class="sidebar-close" id="sidebar-close">✕</button>
+        </div>
+        <div class="sidebar-links">
+            <a href="https://www.usframeteam.top/index.html" class="sidebar-link">首页</a>
+            <div class="sidebar-group">
+                <span class="sidebar-label">产品</span>
+                <div class="sidebar-sublinks">
+                    <a href="https://www.usframeteam.top/usfv1.html" class="sidebar-link">USFv1</a>
+                    <a href="https://www.usframeteam.top/usfv2.html" class="sidebar-link">USFv2</a>
+                </div>
+            </div>
+            <a href="https://usfdoc.pages.dev/" class="sidebar-link">文档</a>
+            <a href="/" class="sidebar-link active">下载</a>
+            <a href="https://www.usframeteam.top/news/index.html" class="sidebar-link">新闻</a>
+            <a href="https://www.usframeteam.top/about.html" class="sidebar-link">关于我们</a>
+            <a href="https://www.usframeteam.top/eula.html" class="sidebar-link">用户协议</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main>
+        <div class="search-container">
+            <div class="search-group" style="display: flex; gap: 1rem;">
+                <div class="search-wrapper" style="flex: 1;">
+                    <svg class="icon search-icon"><use href="#icon-search"></use></svg>
+                    <input type="text" id="search-input" placeholder="搜索文件名称、描述 or 版本...">
+                </div>
+                <a href="/lv0" class="quick-filter-btn" style="flex: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; border: 1px solid var(--border-color); color: var(--text-color); background: var(--bg-color); transition: all 0.2s ease;">
+                    <svg class="icon" style="margin-right: 0.5rem;"><use href="#icon-filter"></use></svg>
+                    快速筛选
+                </a>
+            </div>
+        </div>
+
+        <div class="file-list" id="file-list">
+            <p style="padding: 2rem; text-align: center; color: var(--secondary-text);">正在加载文件列表...</p>
+        </div>
+    </main>
+
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">文件详情</h2>
+                <button id="modal-close" aria-label="关闭">
+                    <svg class="icon"><use href="#icon-close"></use></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-grid">
+                    <div class="modal-section full-width">
+                        <h3>描述</h3>
+                        <p id="modal-desc">暂无描述</p>
+                    </div>
+                    <div class="modal-section">
+                        <h3>版本信息</h3>
+                        <p id="modal-versions">未知</p>
+                    </div>
+                    <div class="modal-section">
+                        <h3>发布日期</h3>
+                        <p id="modal-date">未知</p>
+                    </div>
+                    <div class="modal-section full-width">
+                        <h3>更新日志</h3>
+                        <ul id="modal-changelog" class="changelog-list"></ul>
+                    </div>
+                    <div class="modal-section full-width">
+                        <h3>贡献者</h3>
+                        <div id="modal-contributors" class="tags"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-copy" class="action-btn secondary">
+                    <svg class="icon"><use href="#icon-copy"></use></svg> 复制链接
+                </button>
+                <a id="modal-download" href="#" class="action-btn primary" download>
+                    <svg class="icon"><use href="#icon-download"></use></svg> 立即下载
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="toast" class="toast">已复制到剪贴板</div>
+
+    <footer>
+        2021-{currentYear} © ZUY Studio 及 USF开发团队 保留所有权利。
+    </footer>
+
+    <script src="../assets/script.js"></script>
+</body>
+</html>

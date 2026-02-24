@@ -1,0 +1,296 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../assets/style.css';
+import fallbackData from '../../public/versions_temp.json';
+
+let versions = [];
+try {
+    const response = await fetch('https://raw.githubusercontent.com/Bedrock-OSS/BDS-Versions/main/versions.json');
+    if (response.ok) {
+        const data = await response.json();
+        versions = data.windows?.versions || [];
+    } else {
+        versions = fallbackData.windows?.versions || [];
+    }
+} catch (error) {
+    console.error('Fetch versions failed, using fallback data:', error);
+    versions = fallbackData.windows?.versions || [];
+}
+
+const currentYear = new Date().getFullYear();
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USF 快速筛选向导</title>
+    <ViewTransitions />
+</head>
+<body>
+    <svg style="display: none;">
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </symbol>
+        <symbol id="icon-theme" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </symbol>
+        <symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+        </symbol>
+        <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <rect x="9" y="9" width="13" height="13"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </symbol>
+        <symbol id="icon-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </symbol>
+        <symbol id="icon-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </symbol>
+        <symbol id="icon-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+        </symbol>
+        <symbol id="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </symbol>
+    </svg>
+
+    <header class="header"> 
+         <div class="team-info"> 
+             <button class="mobile-menu-toggle" aria-label="打开菜单">☰</button> 
+             
+             <div class="logo-and-name"> 
+                 <img src="https://www.usframeteam.top/static/pictures/USFLogo.png" alt="USF Logo" class="team-logo" /> 
+                 <a href="/" class="team-name">USFrameTeam</a> 
+             </div> 
+             
+             <div class="header-actions desktop-only"> 
+                 <a href="https://github.com/USFrameTeam" class="github-link" target="_blank" aria-label="访问USFrameTeam的GitHub仓库"> 
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> 
+                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path> 
+                     </svg> 
+                 </a> 
+                 <button class="theme-toggle" id="theme-toggle" aria-label="切换深色模式">🌓</button> 
+             </div> 
+         </div> 
+     </header> 
+ 
+     <nav class="top-nav"> 
+         <div class="nav-links"> 
+             <a href="https://www.usframeteam.top/index.html" class="nav-link">首页</a> 
+             <div class="products-dropdown"> 
+                 <a class="products-link">产品</a> 
+                 <div class="dropdown-content"> 
+                     <a href="https://www.usframeteam.top/usfv1.html" class="dropdown-item">USFv1</a> 
+                     <a href="https://www.usframeteam.top/usfv2.html" class="dropdown-item">USFv2</a> 
+                 </div> 
+             </div> 
+             <a href="https://usfdoc.pages.dev/" class="nav-link">文档</a> 
+             <a href="/" class="nav-link active">下载</a> 
+             <a href="https://www.usframeteam.top/news/index.html" class="nav-link">新闻</a> 
+             <a href="https://www.usframeteam.top/about.html" class="nav-link">关于我们</a> 
+             <a href="https://www.usframeteam.top/eula.html" class="nav-link">用户协议</a> 
+         </div> 
+     </nav>
+
+    <div class="mobile-sidebar" id="mobile-sidebar">
+        <div class="sidebar-header">
+            <img src="https://www.usframeteam.top/static/pictures/USFLogo.png" alt="USF Logo" class="team-logo" />
+            <button class="sidebar-close" id="sidebar-close">✕</button>
+        </div>
+        <div class="sidebar-links">
+            <a href="https://www.usframeteam.top/index.html" class="sidebar-link">首页</a>
+            <div class="sidebar-group">
+                <span class="sidebar-label">产品</span>
+                <div class="sidebar-sublinks">
+                    <a href="https://www.usframeteam.top/usfv1.html" class="sidebar-link">USFv1</a>
+                    <a href="https://www.usframeteam.top/usfv2.html" class="sidebar-link">USFv2</a>
+                </div>
+            </div>
+            <a href="https://usfdoc.pages.dev/" class="sidebar-link">文档</a>
+            <a href="/" class="sidebar-link active">下载</a>
+            <a href="https://www.usframeteam.top/news/index.html" class="sidebar-link">新闻</a>
+            <a href="https://www.usframeteam.top/about.html" class="sidebar-link">关于我们</a>
+            <a href="https://www.usframeteam.top/eula.html" class="sidebar-link">用户协议</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="wizard-container">
+        <div id="step-1" class="step-container active">
+            <div class="step-header">
+                <h2 class="step-title">选择您的 Minecraft 版本</h2>
+                <p class="step-desc">请选择您当前使用的 Minecraft 版本类型</p>
+            </div>
+            <div class="options-grid">
+                <div class="option-card" onclick="selectPlatform('bedrock')">
+                    <h3>基岩正式版</h3>
+                    <p style="font-size: 0.8rem; color: var(--secondary-text); margin-top: 0.5rem;">Bedrock Edition</p>
+                </div>
+                <div class="option-card" onclick="selectPlatform('java')">
+                    <h3>Java 正式版</h3>
+                    <p style="font-size: 0.8rem; color: var(--secondary-text); margin-top: 0.5rem;">Java Edition</p>
+                </div>
+                <div class="option-card" onclick="selectPlatform('china')">
+                    <h3>中国版</h3>
+                    <p style="font-size: 0.8rem; color: var(--secondary-text); margin-top: 0.5rem;">China Edition</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="step-unsupported" class="step-container">
+            <div class="step-header">
+                <h2 class="step-title">暂不支持该版本</h2>
+                <p class="step-desc">目前 USF 暂不支持您所选的版本。</p>
+            </div>
+            <div style="text-align: center;">
+                <a href="/" class="action-btn primary" style="display: inline-block; padding: 0.8rem 2rem; text-decoration: none;">
+                    返回下载站
+                </a>
+            </div>
+        </div>
+
+        <div id="step-2" class="step-container">
+            <div class="step-header">
+                <h2 class="step-title">选择大版本</h2>
+                <p class="step-desc">请选择 Minecraft 基岩版的大版本号</p>
+            </div>
+            <div id="major-versions-grid" class="options-grid">
+            </div>
+            <div id="step-2-loading" class="loading">正在获取版本列表...</div>
+        </div>
+
+        <div id="step-3" class="step-container">
+            <div class="step-header">
+                <h2 class="step-title">选择具体版本</h2>
+                <p class="step-desc">请选择您具体的游戏版本号</p>
+            </div>
+            <div id="minor-versions-grid" class="options-grid">
+            </div>
+        </div>
+
+        <div id="step-4" class="step-container">
+            <div class="step-header">
+                <h2 class="step-title">筛选结果</h2>
+                <p class="step-desc" id="result-desc">为您找到以下匹配的插件</p>
+            </div>
+            <div id="result-message"></div>
+            <div id="file-list" class="file-list">
+            </div>
+        </div>
+
+        <div id="step-5" class="step-container">
+            <div class="step-header">
+                <h2 class="step-title">你会在什么平台部署 USF？</h2>
+                <p class="step-desc">请选择您打算运行 USF 的环境</p>
+            </div>
+            <div class="options-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+                <div class="option-card" onclick="selectDeployment('local')">
+                    <svg class="option-icon"><use href="#icon-monitor"></use></svg>
+                    <h3>本地联机</h3>
+                    <p style="font-size: 0.8rem; color: var(--secondary-text); margin-top: 0.5rem;">在本地客户端和他人或单人进行游玩</p>
+                </div>
+                <div class="option-card" onclick="selectDeployment('simpfun')">
+                    <img src="https://simpfun.cn/logo.png" alt="简幻欢" style="width: 48px; height: 48px; margin-bottom: 1rem;">
+                    <h3>简幻欢</h3>
+                    <p style="font-size: 0.8rem; color: var(--secondary-text); margin-top: 0.5rem;">在国内知名免费开服平台部署 USF</p>
+                </div>
+                <div class="option-card" onclick="selectDeployment('other')">
+                    <svg class="option-icon"><use href="#icon-globe"></use></svg>
+                    <h3>其他平台</h3>
+                    <p style="font-size: 0.8rem; color: var(--secondary-text); margin-top: 0.5rem;">通用部署方案，适合绝大部分面板服或 VPS</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="wizard-footer-wrapper">
+        <div class="wizard-footer">
+            <button id="btn-prev" class="wizard-btn" onclick="prevStep()" disabled>上一步</button>
+            <button id="btn-next" class="wizard-btn primary" onclick="nextStep()" disabled>下一步</button>
+        </div>
+    </div>
+
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">文件详情</h2>
+                <button id="modal-close" aria-label="关闭">
+                    <svg class="icon"><use href="#icon-close"></use></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-grid">
+                    <div class="modal-section full-width">
+                        <h3>描述</h3>
+                        <p id="modal-desc">暂无描述</p>
+                    </div>
+                    <div class="modal-section">
+                        <h3>版本信息</h3>
+                        <p id="modal-versions">未知</p>
+                    </div>
+                    <div class="modal-section">
+                        <h3>发布日期</h3>
+                        <p id="modal-date">未知</p>
+                    </div>
+                    <div class="modal-section full-width">
+                        <h3>更新日志</h3>
+                        <ul id="modal-changelog" class="changelog-list"></ul>
+                    </div>
+                    <div class="modal-section full-width">
+                        <h3>贡献者</h3>
+                        <div id="modal-contributors" class="tags"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-copy" class="action-btn secondary">
+                    <svg class="icon"><use href="#icon-copy"></use></svg> 复制链接
+                </button>
+                <a id="modal-download" href="#" class="action-btn primary" download>
+                    <svg class="icon"><use href="#icon-download"></use></svg> 立即下载
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="toast" class="toast">已复制到剪贴板</div>
+
+    <footer>
+        2021-{currentYear} © ZUY Studio 及 USF开发团队 保留所有权利。
+    </footer>
+
+    <script define:vars={{ versions }}>
+      window.preFetchedVersions = versions;
+    </script>
+    <script src="../assets/lv0.js"></script>
+</body>
+</html>
