@@ -1,5 +1,22 @@
 export const files = [
     {
+         name: "USF0.7.20B",
+         description: "添加记分板管理功能",
+         changelog:
+        [
+                 "删除记分板默认值按钮，添加记分板管理功能（注：默认值得重新设置），改了部分错字，本次更新默认适配1.21.120及以上的全部Minecraft版本",
+         ],
+         contributors: [
+             "USF开发团队"
+         ],
+         supportVersions: ["1.21.120", "1.21.130","26.x"],
+         releaseDate: "2026-15-10",
+         tags: ["测试版", "1.21"],
+         downloadLink: "/files/main/USF0.7.20B.zip",
+         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+         urgentUpdate: false
+     },
+    {
          name: "USF0.7.19B",
          description: "修复时间获取问题",
          changelog:
