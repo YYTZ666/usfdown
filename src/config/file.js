@@ -27,7 +27,7 @@ export const files = [
              "USF开发团队"
          ],
          supportVersions: ["1.21.120", "1.21.130","26.x"],
-         releaseDate: "2026-15-10",
+         releaseDate: "2026-5-10",
          tags: ["测试版", "1.21"],
          downloadLink: "/files/main/USF0.7.20B.zip",
          feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
