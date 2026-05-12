@@ -1,7 +1,7 @@
 const files = [
     { 
          name: "USF0.7.21F",
-         description: "紧急修复记分板默认值不生效的bug",
+         description: "紧急修复记分板默认值不生效的bug ",
         [
                  "紧急修复记分板默认值不生效的bug，本次更新默认适配1.21.120及以上的全部Minecraft版本",
          ],
