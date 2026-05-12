@@ -1,20 +1,21 @@
 const files = [
     { 
-         name: "USF0.7.21F",
-         description: "紧急修复记分板默认值不生效的bug ",
-        [
-                 "紧急修复记分板默认值不生效的bug，本次更新默认适配1.21.120及以上的全部Minecraft版本",
-         ],
-         contributors: [
-             "USF开发团队"
-         ],
-         supportVersions: ["1.21.120", "1.21.130","26.x"],
-         releaseDate: "2026-5-11",
-         tags: ["测试版", "1.21"],
-         downloadLink: "/files/main/USF0.7.21F.zip",
-         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-         urgentUpdate: true
-     },
+        name: "USF0.7.21F",
+        description: "紧急修复记分板默认值不生效的bug",
+        // 这里修复：补上缺失的 changelog 键名
+        changelog: [
+            "紧急修复记分板默认值不生效的bug，本次更新默认适配1.21.120及以上的全部Minecraft版本",
+        ],
+        contributors: [
+            "USF开发团队"
+        ],
+        supportVersions: ["1.21.120", "1.21.130", "26.x"],
+        releaseDate: "2026-5-11",
+        tags: ["测试版", "1.21"],
+        downloadLink: "/files/main/USF0.7.21F.zip",
+        feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+        urgentUpdate: true
+    },
     {
          name: "USF0.7.20B",
          description: "添加记分板管理功能",
