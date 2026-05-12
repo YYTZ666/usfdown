@@ -1,5 +1,5 @@
 const files = [
-    {
+    { 
          name: "USF0.7.21F",
          description: "紧急修复记分板默认值不生效的bug",
         [
