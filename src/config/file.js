@@ -4,7 +4,9 @@ export const files = [
         description: "紧急修复记分板默认值不生效的bug",
         // 这里修复：补上缺失的 changelog 键名
         changelog: [
-            "紧急修复记分板默认值不生效的bug，本次更新默认适配1.21.120及以上的全部Minecraft版本",
+                 "1·紧急修复记分板默认值不生效的bug",
+                 "2·移除了him",
+                 "3·本次更新默认适配1.21.120及以上的全部Minecraft版本"
         ],
         contributors: [
             "USF开发团队"
@@ -21,7 +23,9 @@ export const files = [
          description: "添加记分板管理功能",
          changelog:
         [
-                 "删除记分板默认值按钮，添加记分板管理功能（注：默认值得重新设置），改了部分错字，本次更新默认适配1.21.120及以上的全部Minecraft版本",
+                 "1·删除记分板默认值按钮，添加记分板管理功能（注：默认值得重新设置）",
+                 "2·改了部分错字",
+                 "3·本次更新默认适配1.21.120及以上的全部Minecraft版本"
          ],
          contributors: [
              "USF开发团队"
