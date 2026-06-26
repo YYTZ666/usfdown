@@ -1,5 +1,27 @@
 export const files = [
     { 
+        name: "USF0.8.0F",
+        description: "USF0.8.0F更新，更多内容详情页查看",
+        // 这里修复：补上缺失的 changelog 键名
+        changelog: [
+                 "1.添加公共点传送点排序和重名检测",
+                 "2.添加删除传送点确认",
+                 "3.添加清空留言板确认",
+                 "4.视角跟踪添加越肩视角",
+                 "3·本次更新默认适配1.21.120及以上的全部Minecraft版本"
+        ],
+        contributors: [
+            "USF开发团队",
+            "ice-rick"
+        ],
+        supportVersions: ["1.21.120", "1.21.130", "26.x"],
+        releaseDate: "2026-6-25",
+        tags: ["测试版", "1.21"],
+        downloadLink: "/files/main/USF0.8.0F.zip",
+        feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+        urgentUpdate: true
+    },
+    { 
         name: "USF0.7.21F",
         description: "紧急修复记分板默认值不生效的bug",
         // 这里修复：补上缺失的 changelog 键名
