@@ -19,7 +19,7 @@ export const files = [
         tags: ["测试版", "1.21"],
         downloadLink: "/files/main/USF0.8.0F.zip",
         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
-        urgentUpdate: true
+        urgentUpdate: false
     },
     { 
         name: "USF0.7.21F",
