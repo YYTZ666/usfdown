@@ -25,7 +25,7 @@ document.addEventListener('astro:page-load', async () => {
 
     let files = [];
     try {
-        const response = await fetch('/api/versions');
+        const response = await fetch('/api/versions.json');
         if (response.ok) {
             files = await response.json();
         } else {
