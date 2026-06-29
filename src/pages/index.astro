@@ -5,8 +5,6 @@ import { files } from '../config/file.js';
 
 const currentYear = new Date().getFullYear();
 ---
-
-<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -131,7 +129,33 @@ const currentYear = new Date().getFullYear();
         </div>
 
         <div class="file-list" id="file-list">
-            <p style="padding: 2rem; text-align: center; color: var(--secondary-text);">正在加载文件列表...</p>
+            {files.map((file, index) => (
+                <div class={"file-card" + (file.urgentUpdate ? " urgent-card" : "")} data-file-index={index} data-name={file.name} data-desc={(file.description || '').toLowerCase()} data-tags={(file.tags || []).join(',').toLowerCase()}>
+                    <div class="card-main">
+                        <div class="file-title">{file.name}</div>
+                        <div class="file-brief">{file.description || '暂无描述'}</div>
+                    </div>
+                    <div class="card-meta">
+                        <div class="meta-row">
+                            <span>适用版本: {(file.supportVersions || []).join(', ')}</span>
+                        </div>
+                        <div class="tags">
+                            {file.urgentUpdate && <span class="tag urgent">紧急更新</span>}
+                            {(file.tags || []).map(tag => <span class="tag">{tag}</span>)}
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="icon-btn action-info" aria-label="查看详情" title="查看详情" data-name={file.name} data-desc={(file.description || '').replace(/"/g, '&quot;')} data-versions={(file.supportVersions || []).join(', ')} data-date={file.releaseDate || '未知'} data-changelog={(file.changelog || []).join('|||')} data-contributors={(file.contributors || []).join(',')} data-download={file.downloadLink}>
+                            <svg class="icon"><use href="#icon-info"></use></svg>
+                            <span class="btn-text">详情</span>
+                        </button>
+                        <a href={file.downloadLink} class="icon-btn action-download" download title="下载">
+                            <svg class="icon"><use href="#icon-download"></use></svg>
+                            <span class="btn-text">下载</span>
+                        </a>
+                    </div>
+                </div>
+            ))}
         </div>
     </main>
 

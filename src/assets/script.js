@@ -1,4 +1,4 @@
-document.addEventListener('astro:page-load', async () => {
+document.addEventListener('astro:page-load', () => {
     const fileList = document.getElementById('file-list');
     const searchInput = document.getElementById('search-input');
     const themeToggle = document.getElementById('theme-toggle');
@@ -16,133 +16,27 @@ document.addEventListener('astro:page-load', async () => {
     const modalCopy = document.getElementById('modal-copy');
     const toast = document.getElementById('toast');
 
-    let currentData = [];
-    let displayedCount = 0;
-    const pageSize = 10;
-    let observer = null;
-
     if (!fileList) return;
 
-    let files = window.__FILES_DATA__;
-
-    if (!Array.isArray(files)) {
-        files = [];
-        try {
-            const response = await fetch('/api/versions.json');
-            if (response.ok) {
-                files = await response.json();
-            } else {
-                fileList.innerHTML = '<p style="padding: 2rem; text-align: center;">无法加载文件配置，请检查 /api/versions.json</p>';
-                return;
-            }
-        } catch (error) {
-            console.error('Fetch versions failed:', error);
-            fileList.innerHTML = '<p style="padding: 2rem; text-align: center;">加载失败，请刷新页面重试</p>';
-            return;
-        }
-    }
-
-    function createTagHtml(text, extraClass = '') {
-        const className = extraClass ? `tag ${extraClass}` : 'tag';
-        return `<span class="${className}">${text}</span>`;
-    }
-
-    function renderCard(file, index) {
-        const card = document.createElement('div');
-        card.className = 'file-card';
-        if (file.urgentUpdate) {
-            card.classList.add('urgent-card');
-        }
-        card.style.animationDelay = `${(index % pageSize) * 0.05}s`;
-
-        const tagsHtml = (file.urgentUpdate ? createTagHtml('紧急更新', 'urgent') : '') + 
-                         (file.tags ? file.tags.map(tag => createTagHtml(tag)).join('') : '');
-        const versions = file.supportVersions ? file.supportVersions.join(', ') : '未知版本';
-        
-        card.dataset.fileIndex = index;
-
-        card.innerHTML = `
-            <div class="card-main">
-                <div class="file-title">${file.name}</div>
-                <div class="file-brief">${file.description || '暂无描述'}</div>
-            </div>
-            <div class="card-meta">
-                <div class="meta-row">
-                    <span>适用版本: ${versions}</span>
-                </div>
-                <div class="tags">${tagsHtml}</div>
-            </div>
-            <div class="card-actions">
-                <button class="icon-btn action-info" aria-label="查看详情" title="查看详情">
-                    <svg class="icon"><use href="#icon-info"></use></svg>
-                    <span class="btn-text">详情</span>
-                </button>
-                <a href="${file.downloadLink}" class="icon-btn action-download" download title="下载">
-                    <svg class="icon"><use href="#icon-download"></use></svg>
-                    <span class="btn-text">下载</span>
-                </a>
-            </div>
-        `;
-        
-        const infoBtn = card.querySelector('.action-info');
-        infoBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openModal(file);
-        });
-
-        return card;
-    }
-
-    function loadMore() {
-        const nextBatch = currentData.slice(displayedCount, displayedCount + pageSize);
-        nextBatch.forEach((file, index) => {
-            fileList.appendChild(renderCard(file, displayedCount + index));
-        });
-        displayedCount += nextBatch.length;
-
-        if (displayedCount < currentData.length) {
-            const lastCard = fileList.lastElementChild;
-            if (lastCard) {
-                observer.observe(lastCard);
-            }
-        }
-    }
-
-    function renderFiles(data) {
-        fileList.innerHTML = '';
-        currentData = data;
-        displayedCount = 0;
-
-        if (observer) {
-            observer.disconnect();
-        }
-
-        observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                observer.unobserve(entries[0].target);
-                loadMore();
-            }
-        }, { rootMargin: '100px' });
-
-        if (data.length === 0) {
-            fileList.innerHTML = '<p style="padding: 2rem; text-align: center; grid-column: 1/-1;">没有找到匹配的文件</p>';
-            return;
-        }
-
-        loadMore();
-    }
-
-    renderFiles(files);
+    const cards = () => fileList.querySelectorAll('.file-card');
 
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
-            const keyword = e.target.value.toLowerCase();
-            const filtered = files.filter(file => 
-                (file.name && file.name.toLowerCase().includes(keyword)) || 
-                (file.description && file.description.toLowerCase().includes(keyword)) ||
-                (file.tags && file.tags.some(tag => tag.toLowerCase().includes(keyword)))
-            );
-            renderFiles(filtered);
+            const keyword = e.target.value.toLowerCase().trim();
+            const allCards = cards();
+            
+            if (!keyword) {
+                allCards.forEach(card => card.style.display = '');
+                return;
+            }
+            
+            allCards.forEach(card => {
+                const name = (card.dataset.name || '').toLowerCase();
+                const desc = (card.dataset.desc || '').toLowerCase();
+                const tags = (card.dataset.tags || '').toLowerCase();
+                const match = name.includes(keyword) || desc.includes(keyword) || tags.includes(keyword);
+                card.style.display = match ? '' : 'none';
+            });
         });
     }
 
@@ -206,15 +100,24 @@ document.addEventListener('astro:page-load', async () => {
         });
     }
 
-    function openModal(file) {
-        modalTitle.textContent = file.name;
-        modalDesc.textContent = file.description || '暂无描述';
-        modalVersions.textContent = file.supportVersions ? file.supportVersions.join(', ') : '未知版本';
-        modalDate.textContent = file.releaseDate || '未知';
+    fileList.addEventListener('click', (e) => {
+        const btn = e.target.closest('.action-info');
+        if (!btn) return;
+        e.preventDefault();
+        openModalFromBtn(btn);
+    });
+
+    function openModalFromBtn(btn) {
+        modalTitle.textContent = btn.dataset.name || '文件详情';
+        modalDesc.textContent = btn.dataset.desc || '暂无描述';
+        modalVersions.textContent = btn.dataset.versions || '未知版本';
+        modalDate.textContent = btn.dataset.date || '未知';
         
         modalChangelog.innerHTML = '';
-        if (file.changelog && file.changelog.length > 0) {
-            file.changelog.forEach(log => {
+        const changelogStr = btn.dataset.changelog || '';
+        if (changelogStr) {
+            changelogStr.split('|||').forEach(log => {
+                if (!log.trim()) return;
                 const li = document.createElement('li');
                 li.textContent = log;
                 modalChangelog.appendChild(li);
@@ -224,18 +127,25 @@ document.addEventListener('astro:page-load', async () => {
         }
 
         modalContributors.innerHTML = '';
-        if (file.contributors && file.contributors.length > 0) {
-            modalContributors.innerHTML = file.contributors.map(c => createTagHtml(c)).join('');
+        const contributorsStr = btn.dataset.contributors || '';
+        if (contributorsStr) {
+            contributorsStr.split(',').forEach(c => {
+                if (!c.trim()) return;
+                const span = document.createElement('span');
+                span.className = 'tag';
+                span.textContent = c;
+                modalContributors.appendChild(span);
+            });
         } else {
             modalContributors.textContent = '-';
         }
 
-        modalDownload.href = file.downloadLink;
+        modalDownload.href = btn.dataset.download || '#';
         
         const currentCopyBtn = document.getElementById('modal-copy');
         currentCopyBtn.onclick = () => {
-             const link = new URL(file.downloadLink, window.location.href).href;
-             copyToClipboard(link);
+            const link = new URL(btn.dataset.download || '#', window.location.href).href;
+            copyToClipboard(link);
         };
 
         modal.classList.add('show');
