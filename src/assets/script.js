@@ -1,6 +1,4 @@
-import { files } from '../config/file.js';
-
-document.addEventListener('astro:page-load', () => {
+document.addEventListener('astro:page-load', async () => {
     const fileList = document.getElementById('file-list');
     const searchInput = document.getElementById('search-input');
     const themeToggle = document.getElementById('theme-toggle');
@@ -25,8 +23,18 @@ document.addEventListener('astro:page-load', () => {
 
     if (!fileList) return;
 
-    if (typeof files === 'undefined') {
-        fileList.innerHTML = '<p style="padding: 2rem; text-align: center;">无法加载文件配置，请检查 config/file.js</p>';
+    let files = [];
+    try {
+        const response = await fetch('/api/versions');
+        if (response.ok) {
+            files = await response.json();
+        } else {
+            fileList.innerHTML = '<p style="padding: 2rem; text-align: center;">无法加载文件配置，请检查 /api/versions</p>';
+            return;
+        }
+    } catch (error) {
+        console.error('Fetch versions failed:', error);
+        fileList.innerHTML = '<p style="padding: 2rem; text-align: center;">加载失败，请刷新页面重试</p>';
         return;
     }
 
