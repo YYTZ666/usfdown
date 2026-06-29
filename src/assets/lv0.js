@@ -1,9 +1,20 @@
-document.addEventListener('astro:page-load', () => {
+document.addEventListener('astro:page-load', async () => {
     const body = document.body;
     const themeToggle = document.getElementById('theme-toggle');
     const savedTheme = localStorage.getItem('theme');
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const files = window.__FILES_DATA__;
+    
+    let files = window.__FILES_DATA__;
+    if (!Array.isArray(files)) {
+        try {
+            const response = await fetch('/api/versions.json');
+            if (response.ok) {
+                files = await response.json();
+            }
+        } catch (e) {
+            console.error('Failed to fetch files:', e);
+        }
+    }
     
     function setTheme(isDark) {
         if (isDark) {
