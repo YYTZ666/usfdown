@@ -1,6 +1,7 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 import '../assets/style.css';
+import { files } from '../config/file.js';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -11,6 +12,7 @@ const currentYear = new Date().getFullYear();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USF 下载中心</title>
+    <link rel="preload" href="/api/versions.json" as="fetch" crossorigin>
     <ViewTransitions />
 </head>
 <body>
@@ -181,6 +183,9 @@ const currentYear = new Date().getFullYear();
         2021-{currentYear} © ZUY Studio 及 USF开发团队 保留所有权利。
     </footer>
 
+    <script define:vars={{ files }}>
+      window.__FILES_DATA__ = files;
+    </script>
     <script src="../assets/script.js"></script>
 </body>
 </html>

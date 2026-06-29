@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import '../assets/style.css';
 import fallbackData from '../../public/versions_temp.json';
+import { files } from '../config/file.js';
 
 let versions = [];
 try {
@@ -26,6 +27,7 @@ const currentYear = new Date().getFullYear();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USF 快速筛选向导</title>
+    <link rel="preload" href="/api/versions.json" as="fetch" crossorigin>
     <ViewTransitions />
 </head>
 <body>
@@ -288,8 +290,9 @@ const currentYear = new Date().getFullYear();
         2021-{currentYear} © ZUY Studio 及 USF开发团队 保留所有权利。
     </footer>
 
-    <script define:vars={{ versions }}>
+    <script define:vars={{ versions, files }}>
       window.preFetchedVersions = versions;
+      window.__FILES_DATA__ = files;
     </script>
     <script src="../assets/lv0.js"></script>
 </body>

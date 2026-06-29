@@ -1,10 +1,9 @@
-import { files } from '../config/file.js';
-
 document.addEventListener('astro:page-load', () => {
     const body = document.body;
     const themeToggle = document.getElementById('theme-toggle');
     const savedTheme = localStorage.getItem('theme');
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const files = window.__FILES_DATA__;
     
     function setTheme(isDark) {
         if (isDark) {

@@ -23,19 +23,23 @@ document.addEventListener('astro:page-load', async () => {
 
     if (!fileList) return;
 
-    let files = [];
-    try {
-        const response = await fetch('/api/versions.json');
-        if (response.ok) {
-            files = await response.json();
-        } else {
-            fileList.innerHTML = '<p style="padding: 2rem; text-align: center;">无法加载文件配置，请检查 /api/versions</p>';
+    let files = window.__FILES_DATA__;
+
+    if (!Array.isArray(files)) {
+        files = [];
+        try {
+            const response = await fetch('/api/versions.json');
+            if (response.ok) {
+                files = await response.json();
+            } else {
+                fileList.innerHTML = '<p style="padding: 2rem; text-align: center;">无法加载文件配置，请检查 /api/versions.json</p>';
+                return;
+            }
+        } catch (error) {
+            console.error('Fetch versions failed:', error);
+            fileList.innerHTML = '<p style="padding: 2rem; text-align: center;">加载失败，请刷新页面重试</p>';
             return;
         }
-    } catch (error) {
-        console.error('Fetch versions failed:', error);
-        fileList.innerHTML = '<p style="padding: 2rem; text-align: center;">加载失败，请刷新页面重试</p>';
-        return;
     }
 
     function createTagHtml(text, extraClass = '') {
