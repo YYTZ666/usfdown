@@ -477,6 +477,14 @@ document.addEventListener('astro:page-load', async () => {
         const infoBtn = card.querySelector('.action-info');
         infoBtn.onclick = () => openModal(file);
 
+        const downloadBtn = card.querySelector('.action-download');
+        if (downloadBtn) {
+            downloadBtn.onclick = (e) => {
+                e.preventDefault();
+                showEulaModal(file.downloadLink);
+            };
+        }
+
         return card;
     }
 
@@ -559,13 +567,7 @@ document.addEventListener('astro:page-load', async () => {
         if (copyBtn) {
             copyBtn.onclick = () => {
                  const link = new URL(file.downloadLink, window.location.href).href;
-                 navigator.clipboard.writeText(link).then(() => {
-                    const toast = document.getElementById('toast');
-                    if (toast) {
-                        toast.classList.add('show');
-                        setTimeout(() => toast.classList.remove('show'), 2000);
-                    }
-                 });
+                 copyToClipboard(link);
             };
         }
 
@@ -585,6 +587,63 @@ document.addEventListener('astro:page-load', async () => {
     if (modalClose) modalClose.onclick = closeModal;
     if (modal) modal.onclick = (e) => { if (e.target === modal) closeModal(); };
 
+    if (modalDownload) {
+        modalDownload.addEventListener('click', (e) => {
+            e.preventDefault();
+            showEulaModal(modalDownload.href);
+        });
+    }
+
+    let pendingDownloadUrl = null;
+
+    function showEulaModal(url) {
+        pendingDownloadUrl = url;
+        document.getElementById('eula-agree').checked = false;
+        document.getElementById('eula-confirm').disabled = true;
+        document.getElementById('eula-modal').classList.add('show');
+        body.style.overflow = 'hidden';
+    }
+
+    function closeEulaModal() {
+        document.getElementById('eula-modal').classList.remove('show');
+        body.style.overflow = '';
+        pendingDownloadUrl = null;
+    }
+
+    document.getElementById('eula-agree').addEventListener('change', function() {
+        document.getElementById('eula-confirm').disabled = !this.checked;
+    });
+
+    document.getElementById('eula-cancel').addEventListener('click', closeEulaModal);
+
+    document.getElementById('eula-confirm').addEventListener('click', () => {
+        if (pendingDownloadUrl) {
+            const a = document.createElement('a');
+            a.href = pendingDownloadUrl;
+            a.setAttribute('download', '');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            closeEulaModal();
+        }
+    });
+
+    document.getElementById('eula-modal-close').addEventListener('click', closeEulaModal);
+    document.getElementById('eula-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'eula-modal') closeEulaModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const eulaModal = document.getElementById('eula-modal');
+            if (eulaModal && eulaModal.classList.contains('show')) {
+                closeEulaModal();
+            } else if (modal && modal.classList.contains('show')) {
+                closeModal();
+            }
+        }
+    });
+
     function compareVersions(v1, v2) {
         const p1 = v1.split('.').map(Number);
         const p2 = v2.split('.').map(Number);
@@ -597,6 +656,38 @@ document.addEventListener('astro:page-load', async () => {
             if (n1 < n2) return -1;
         }
         return 0;
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        if (toast) {
+            if (message) {
+                toast.textContent = message;
+            }
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+                if (message) {
+                    setTimeout(() => { toast.textContent = '已复制到剪贴板'; }, 300);
+                }
+            }, 2000);
+        }
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast();
+        }).catch(err => {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {}
+            document.body.removeChild(textArea);
+        });
     }
 
     updateFooterButtons();

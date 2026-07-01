@@ -209,6 +209,32 @@ const currentYear = new Date().getFullYear();
             </div>
         </div>
     </div>
+    <div id="eula-modal" class="modal eula-modal">
+        <div class="modal-content eula-modal-content">
+            <div class="modal-header">
+                <h2>下载前必读</h2>
+                <button id="eula-modal-close" aria-label="关闭">
+                    <svg class="icon"><use href="#icon-close"></use></svg>
+                </button>
+            </div>
+            <div class="modal-body eula-modal-body">
+                <div class="eula-body-text">在下载和使用本软件前，请仔细阅读并同意<b>用户协议</b>。</div>
+                <div class="eula-iframe-wrapper">
+                    <iframe src="https://www.usframeteam.top/eula.html" title="用户协议"></iframe>
+                </div>
+            </div>
+            <div class="eula-modal-footer">
+                <label class="eula-checkbox-label">
+                    <input type="checkbox" id="eula-agree">
+                    我已阅读并同意
+                </label>
+                <div class="eula-modal-actions">
+                    <button id="eula-cancel">取消</button>
+                    <button id="eula-confirm" disabled>同意并下载</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="toast" class="toast">已复制到剪贴板</div>
 
     <footer>

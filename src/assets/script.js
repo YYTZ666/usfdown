@@ -101,10 +101,76 @@ document.addEventListener('astro:page-load', () => {
     }
 
     fileList.addEventListener('click', (e) => {
-        const btn = e.target.closest('.action-info');
-        if (!btn) return;
-        e.preventDefault();
-        openModalFromBtn(btn);
+        const downloadBtn = e.target.closest('.action-download');
+        const infoBtn = e.target.closest('.action-info');
+        
+        if (downloadBtn) {
+            e.preventDefault();
+            showEulaModal(downloadBtn.href);
+            return;
+        }
+        
+        if (infoBtn) {
+            e.preventDefault();
+            openModalFromBtn(infoBtn);
+        }
+    });
+
+    if (modalDownload) {
+        modalDownload.addEventListener('click', (e) => {
+            e.preventDefault();
+            showEulaModal(modalDownload.href);
+        });
+    }
+
+    let pendingDownloadUrl = null;
+
+    function showEulaModal(url) {
+        pendingDownloadUrl = url;
+        document.getElementById('eula-agree').checked = false;
+        document.getElementById('eula-confirm').disabled = true;
+        document.getElementById('eula-modal').classList.add('show');
+        body.style.overflow = 'hidden';
+    }
+
+    function closeEulaModal() {
+        document.getElementById('eula-modal').classList.remove('show');
+        body.style.overflow = '';
+        pendingDownloadUrl = null;
+    }
+
+    document.getElementById('eula-agree').addEventListener('change', function() {
+        document.getElementById('eula-confirm').disabled = !this.checked;
+    });
+
+    document.getElementById('eula-cancel').addEventListener('click', closeEulaModal);
+
+    document.getElementById('eula-confirm').addEventListener('click', () => {
+        if (pendingDownloadUrl) {
+            const a = document.createElement('a');
+            a.href = pendingDownloadUrl;
+            a.setAttribute('download', '');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            closeEulaModal();
+        }
+    });
+
+    document.getElementById('eula-modal-close').addEventListener('click', closeEulaModal);
+    document.getElementById('eula-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'eula-modal') closeEulaModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const eulaModal = document.getElementById('eula-modal');
+            if (eulaModal && eulaModal.classList.contains('show')) {
+                closeEulaModal();
+            } else if (modal && modal.classList.contains('show')) {
+                closeModal();
+            }
+        }
     });
 
     function openModalFromBtn(btn) {
@@ -184,11 +250,17 @@ document.addEventListener('astro:page-load', () => {
         });
     }
 
-    function showToast() {
+    function showToast(message) {
         if (toast) {
+            if (message) {
+                toast.textContent = message;
+            }
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
+                if (message) {
+                    setTimeout(() => { toast.textContent = '已复制到剪贴板'; }, 300);
+                }
             }, 2000);
         }
     }
