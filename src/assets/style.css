@@ -739,6 +739,7 @@ input {
     border: 1px solid var(--border-color);
     color: var(--text-color);
     transition: all 0.2s linear;
+    touch-action: manipulation;
 }
 
 .icon-btn:hover {
@@ -865,6 +866,7 @@ input {
     text-decoration: none;
     border: 1px solid var(--accent-color);
     transition: all 0.2s linear;
+    touch-action: manipulation;
 }
 
 .action-btn.primary {
