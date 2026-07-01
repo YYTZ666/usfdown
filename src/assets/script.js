@@ -116,11 +116,21 @@ document.addEventListener('astro:page-load', () => {
         }
     });
 
+    fileList.addEventListener('touchstart', (e) => {
+        const downloadBtn = e.target.closest('.action-download');
+        if (downloadBtn) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+
     if (modalDownload) {
         modalDownload.addEventListener('click', (e) => {
             e.preventDefault();
             showEulaModal(modalDownload.href);
         });
+        modalDownload.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+        }, { passive: false });
     }
 
     let pendingDownloadUrl = null;

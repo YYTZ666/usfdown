@@ -483,6 +483,9 @@ document.addEventListener('astro:page-load', async () => {
                 e.preventDefault();
                 showEulaModal(file.downloadLink);
             };
+            downloadBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+            }, { passive: false });
         }
 
         return card;
@@ -592,6 +595,9 @@ document.addEventListener('astro:page-load', async () => {
             e.preventDefault();
             showEulaModal(modalDownload.href);
         });
+        modalDownload.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+        }, { passive: false });
     }
 
     let pendingDownloadUrl = null;
