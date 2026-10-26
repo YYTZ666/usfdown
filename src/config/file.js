@@ -1,5 +1,23 @@
 export const files = [
     { 
+        name: "USF0.8.2F",
+        description: "USF0.8.2F更新，修复了商店系统的结构被删除后无法录入物品的问题",
+        // 这里修复：补上缺失的 changelog 键名
+        changelog: [
+                 "1.修复了商店系统的结构被删除后无法录入物品的问题"
+                 
+        ],
+        contributors: [
+            "USF开发团队"
+        ],
+        supportVersions: ["1.21.120", "1.21.130", "26.x"],
+        releaseDate: "2026-10-27",
+        tags: ["测试版", "1.21"],
+        downloadLink: "/files/main/USF0.8.2F.zip",
+        feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
+        urgentUpdate: false
+    },
+    { 
         name: "USF0.8.1C",
         description: "USF0.8.1C更新，仅仅修改了动画传送，加入了打断系统（需要开启动画传送模式）",
         // 这里修复：补上缺失的 changelog 键名
@@ -11,7 +29,7 @@ export const files = [
             "USF开发团队"
         ],
         supportVersions: ["1.21.120", "1.21.130", "26.x"],
-        releaseDate: "2026-10-26",
+        releaseDate: "2026-9-26",
         tags: ["测试版", "1.21"],
         downloadLink: "/files/main/USF0.8.1C.zip",
         feedbackLink: "https://github.com/YYTZ666/usfdown/issues/new/choose",
